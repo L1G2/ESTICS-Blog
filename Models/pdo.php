@@ -14,7 +14,7 @@
                 // Si connection non établie
                 return $pdo ;
             } catch(Exception $error){
-                die("[ERREUR] La c  onnexion à la BDD a échouée :" . $error->getMessage());
+                die("[ERREUR] La connexion à la BDD a échouée :" . $error->getMessage());
             }
         }
     }
