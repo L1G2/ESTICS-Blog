@@ -9,7 +9,7 @@ class user extends CONNECT_BDD
     */
     public function signIn( $email, $mdp, $type){
         $bdd = $this -> dbConnect();
-        $sql = $bdd -> prepare ("SELECT prenom  FROM user U INNER JOIN type T ON T.id = U.idType WHERE email = ? AND  mdp = SHA1(?) AND T.id  = ?");
+        $sql = $bdd -> prepare ("SELECT id  FROM user U INNER JOIN type T ON T.id = U.idType WHERE email = ? AND  mdp = SHA1(?) AND T.id  = ?");
         $sql -> execute (array ($email, $mdp, $type));        
         if ($sql -> rowCount() == 1){
             $info = $sql -> fetch();

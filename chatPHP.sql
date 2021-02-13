@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : sam. 13 fév. 2021 à 12:21
+-- Généré le : sam. 13 fév. 2021 à 21:47
 -- Version du serveur :  8.0.23-0ubuntu0.20.04.1
 -- Version de PHP : 7.4.3
 
@@ -87,11 +87,19 @@ INSERT INTO `cours` (`id`, `nom`, `idUser`, `idCategorie`) VALUES
 CREATE TABLE `discussion` (
   `id` int NOT NULL,
   `idUserEmmeteur` int NOT NULL,
-  `idUserRecepeteur` int NOT NULL,
+  `idUserRecepteur` int NOT NULL,
   `message` text NOT NULL,
-  `visibilite` tinyint NOT NULL,
-  `date` date NOT NULL
+  `visibilite` tinyint NOT NULL DEFAULT '0',
+  `date` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `discussion`
+--
+
+INSERT INTO `discussion` (`id`, `idUserEmmeteur`, `idUserRecepteur`, `message`, `visibilite`, `date`) VALUES
+(3, 1, 2, 'Kaiz lesy ', 0, '2021-02-13 22:33:30'),
+(4, 2, 1, 'Kaiz lty aaa !! ela lesy zay le ', 0, '2021-02-13 22:34:22');
 
 -- --------------------------------------------------------
 
@@ -124,7 +132,7 @@ CREATE TABLE `user` (
   `nom` char(50) NOT NULL,
   `prenom` char(50) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `password` varchar(250) NOT NULL,
+  `mdp` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `idType` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -132,13 +140,15 @@ CREATE TABLE `user` (
 -- Déchargement des données de la table `user`
 --
 
-INSERT INTO `user` (`id`, `nom`, `prenom`, `email`, `password`, `idType`) VALUES
+INSERT INTO `user` (`id`, `nom`, `prenom`, `email`, `mdp`, `idType`) VALUES
 (1, 'RAJAONARIVONY', 'Rivo Lalaina', 'rivo2302@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 3),
 (2, 'BOTORAVONY', 'Arlème Johnson', 'rootkit7628@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 2),
 (3, 'ANONA', 'Tréal Darcia', 'darcia2302@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 1),
-(4, 'ANDRIAMASY', 'Miadantsoa Salema', 'salema@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 1),
+(4, 'ANDRIAMASY Miadantsoa', 'Salema', 'salema@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 1),
 (5, 'TAFITASOA', 'Fabrice', 'fabrice@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 2),
-(6, 'RAVOLOLONIRINA', 'Angela', 'angela@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 2);
+(6, 'RAVOLOLONIRINA', 'Angela', 'angela@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 2),
+(7, 'RASOANAIVO', 'Kanto', 'kanto@esti.mg', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 1),
+(8, 'RAJERISON', 'Fabien Julio', 'fabien53@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 3);
 
 --
 -- Index pour les tables déchargées
@@ -171,7 +181,7 @@ ALTER TABLE `cours`
 ALTER TABLE `discussion`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idUserEmmeteur` (`idUserEmmeteur`),
-  ADD KEY `idUserRecepeteur` (`idUserRecepeteur`);
+  ADD KEY `idUserRecepeteur` (`idUserRecepteur`);
 
 --
 -- Index pour la table `type`
@@ -212,7 +222,7 @@ ALTER TABLE `cours`
 -- AUTO_INCREMENT pour la table `discussion`
 --
 ALTER TABLE `discussion`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `type`
@@ -224,7 +234,7 @@ ALTER TABLE `type`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
