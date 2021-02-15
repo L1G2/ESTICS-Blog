@@ -23,7 +23,7 @@ class message extends CONNECT_BDD
         
         $sender = array ();
         $date = array();
-        $message = array ();
+        $message = array ();    
 
         while ($data = $query -> fetch()){
             array_push($sender, $data["sender"]);
@@ -35,10 +35,36 @@ class message extends CONNECT_BDD
     }
 
     /*
-        Une fonction pour compter le nombre de nouveaux messages pour un utilisateur
+        Une fonction pour compter le nombre de nouveaux messages pour un utilisateur et 
+    */
+    public function check_nb_messages ($id){
+        $bdd = $this -> dbconnect();
+        $query = $bdd -> prepare (" SELECT COUNT(*) as total from discussion where idUserRecepteur = ? and visibilite = 0 ");
+        $query -> execute(array($id, ));   
+
+        $info = $sql -> fetch(0);
+        if ($info[0] >= 1){
+            return $info[0];
+        }
+        
+    }
+
+    /*
+        Une fonction qui retourner de qui et qui sont les nouveaux messages et même les autres messages non lu 
     */
     public function check_new_messages ($id){
+        $bdd = $this -> dbconnect();
+        $query = $bdd -> prepare (" SELECT CONCAT (U.nom ,' ',U.prenom) as sender , COUNT(*) FROM discussion D INNER JOIN user U on U.id = D.idUserEmmeteur WHERE D.visibilite = 0 AND D.idUserRecepteur = 2 GROUP BY sender UNION SELECT CONCAT (U.nom ,' ',U.prenom) as sender , COUNT(*) FROM discussion D INNER JOIN user U on U.id = D.idUserEmmeteur WHERE D.visibilite = 1 AND D.idUserRecepteur = 2 GROUP BY sender LIMIT 10 ");
+        $query -> execute(array($id, )); 
 
+        $sender = array ();
+        $new_message = array();
+
+        while ($data = $query -> fetch()){
+            array_push($sender, $data["sender"]);
+            array_push($new_message, $data["date"]);
+
+        }
     }
 
 }   

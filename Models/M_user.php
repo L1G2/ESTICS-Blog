@@ -65,7 +65,7 @@ class user extends CONNECT_BDD
    */
     public function update ($id, $nom , $prenom ,$email){
         $bdd = $this -> dbConnect();
-        $query = $bdd -> prepare ("UPDATE user SET nom= ?, prenom =? , email = ? WHERE id = ? ");
+        $query = $bdd -> prepare ("UPDATE user SET nom = ?, prenom = ? , email = ? WHERE id = ? ");
         $query -> execute (array ($nom , $prenom ,$email,$id));
    }
 
