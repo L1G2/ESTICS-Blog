@@ -5,7 +5,7 @@ require_once("pdo.php");
 class user extends CONNECT_BDD
 {
     /*
-        C'est la fonction d'authentification.
+        La fonction d'authentification.
     */
     public function signIn( $email, $mdp, $type){
         $bdd = $this -> dbConnect();
@@ -15,9 +15,9 @@ class user extends CONNECT_BDD
             $info = $sql -> fetch();
             return $info[0];
         }    
-   }
+   }    
    /*
-        C'est une fonction qui récupère la liste des users, soit étudiant  soit administrateur  ,
+        Une fonction qui récupère la liste des users, soit étudiant  soit administrateur  ,
         soit un professeur. Elle prend en paramètre: 
             1= listes es etudiants 
             2= listes des  professeurs, 
@@ -43,7 +43,7 @@ class user extends CONNECT_BDD
    }
 
    /*
-        C'est la fonction de récuperer les details sur un user en particulier.
+        Une fonction de récuperer les details sur un user en particulier.
    */
     public function details($id){
         $bdd = $this -> dbConnect();
@@ -61,7 +61,7 @@ class user extends CONNECT_BDD
    }
 
    /*
-        C'est la fonction qui va se charger de la modification des élements dans la table users.
+        Une fonction qui va se charger de la modification des élements dans la table users.
    */
     public function update ($id, $nom , $prenom ,$email){
         $bdd = $this -> dbConnect();
@@ -70,7 +70,7 @@ class user extends CONNECT_BDD
    }
 
    /*
-        La fonctionnde supression d'une ligne de la table users.
+        Une fonction de supression d'une ligne de la table users.
    */
     public function delete ($id){
         $bdd = $this -> dbconnect();
@@ -78,7 +78,7 @@ class user extends CONNECT_BDD
         $query -> execute(array($id, ));
     }
     /*
-        La fonction pour insérer des lignes dans la table users
+        Une fonction pour insérer des lignes dans la table users
     */  
     public function inserer ($nom, $prenom, $email, $mdp, $idType){
         $bdd = $this -> dbconnect();
