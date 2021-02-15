@@ -37,12 +37,12 @@ class message extends CONNECT_BDD
     /*
         Une fonction pour compter le nombre de nouveaux messages pour un utilisateur et 
     */
-    public function check_nb_messages ($id){
+    public function check_nb_message ($id){
         $bdd = $this -> dbconnect();
         $query = $bdd -> prepare (" SELECT COUNT(*) as total from discussion where idUserRecepteur = ? and visibilite = 0 ");
         $query -> execute(array($id, ));   
 
-        $info = $sql -> fetch(0);
+        $info = $query -> fetch();
         if ($info[0] >= 1){
             return $info[0];
         }
@@ -50,26 +50,36 @@ class message extends CONNECT_BDD
     }
 
     /*
-        Une fonction qui retourner de qui et qui sont les nouveaux messages et même les autres messages non lu 
+        Une fonction qui retourne les dix dernier discussion d'une personne , du discussion ou y a encore des 
+    messages non vue jusqu'au discussion ,on on a déja vue tout les textes .(comme messeger ;-) )
     */
-    public function check_new_messages ($id){
+    public function check_new_message ($id){
         $bdd = $this -> dbconnect();
-        $query = $bdd -> prepare (" SELECT CONCAT (U.nom ,' ',U.prenom) as sender , COUNT(*) FROM discussion D INNER JOIN user U on U.id = D.idUserEmmeteur WHERE D.visibilite = 0 AND D.idUserRecepteur = 2 GROUP BY sender UNION SELECT CONCAT (U.nom ,' ',U.prenom) as sender , COUNT(*) FROM discussion D INNER JOIN user U on U.id = D.idUserEmmeteur WHERE D.visibilite = 1 AND D.idUserRecepteur = 2 GROUP BY sender LIMIT 10 ");
-        $query -> execute(array($id, )); 
+        $query = $bdd -> prepare (" SELECT CONCAT (U.nom ,' ',U.prenom) as sender , COUNT(*) as total , D.visibilite as vue FROM discussion D INNER JOIN user U on U.id = D.idUserEmmeteur WHERE D.visibilite = 0 AND D.idUserRecepteur = ? GROUP BY sender UNION SELECT CONCAT (U.nom ,' ',U.prenom) as sender , COUNT(*) , D.visibilite FROM discussion D INNER JOIN user U on U.id = D.idUserEmmeteur WHERE D.visibilite = 1 AND D.idUserRecepteur = ? GROUP BY sender LIMIT 16 ");
+        $query -> execute(array($id, $id)); 
 
         $sender = array ();
         $new_message = array();
+        $visibility = array();
 
         while ($data = $query -> fetch()){
-            array_push($sender, $data["sender"]);
-            array_push($new_message, $data["date"]);
-
+            if (!in_array($data["sender"], $sender)) {
+                array_push($sender, $data["sender"]);
+                array_push($new_message, $data["total"]);
+                array_push($visibility ,$data["vue"]);
+            }
+            else {
+                continue;
+            }
         }
+
+        return [$sender, $new_message, $visibility];
     }
 
 }   
 
 $message = new message();
 
-$message -> inserer (2, 1 );
+$rest = $message -> check_message(2,1);
+print_r($rest);
 
