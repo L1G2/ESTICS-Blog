@@ -1,0 +1,117 @@
+@font-face {
+  font-family: 'Poppins';
+  src: url('../fonts/Poppins.ttf') format('truetype');
+}
+
+html {
+  background-color: #009FE3;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  height: 100vh;
+}
+
+h2 {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  display:inline-block;
+  margin: 40px 8px 10px 8px; 
+  color: #cccccc;
+}
+main{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: 100%;
+  min-height: 100%
+}
+#container {
+  border-radius: 10px 0 10px 10px;
+  background: #fff;
+  padding: 30px;
+  width: 90%;
+  max-width: 450px;
+  position: relative;
+  padding: 0px;
+  box-shadow: 0 20px 30px 0 rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+#logo {
+  width:25%;
+  margin: 15px;
+}
+
+h2.title {
+  color: #0d0d0d;
+  font-size: 20px;
+  border-bottom: 2px solid #5fbae9;
+}
+
+input[type=button], input[type=submit], input[type=reset]  {
+  background-color: #009FE3;
+  border: none;
+  color: white;
+  padding: 5px 35px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 17px;
+  box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+  border-radius: 5px 5px 5px 5px;
+  margin: 10px 10px 40px 10px;
+}
+
+input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
+  background-color: #39ace7;
+  cursor: pointer;
+}
+
+
+input[type=email], input[type=password], input[type=text]{
+  background-color: #f6f6f6;
+  border: none;
+  color: #0d0d0d;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 20px;
+  width: 75%;
+  border: 2px solid #f6f6f6;
+  border-radius: 20px 0px 20px 0px;
+}
+
+input[type=email]:focus, input[type=password]:focus, input[type=text]:focus {
+  background-color: #fff;
+  border-bottom: 2px solid #5fbae9;
+}
+
+input[type=text]:placeholder {
+  color: #cccccc;
+}
+
+#banner {
+  background-color: #f6f6f6;
+  border-top: 1px solid #dce8f1;
+  padding: 25px;
+  text-align: center !important;
+  border-radius: 0 0 30px 0;
+}
+
+select{
+  cursor: pointer;
+}
+
+/* General */
+
+*:focus {
+    outline: none;
+} 
+
+* {
+  box-sizing: border-box;
+}
