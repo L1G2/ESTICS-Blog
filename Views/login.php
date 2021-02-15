@@ -25,9 +25,9 @@
         <!-- Select rôle -->
           <div id="banner">
             <select class="select">
-              <option value="0">Administrateur</option>
-              <option value="1" selected>Etudiant</option>
-              <option value="2">Professeur</option>
+              <option value="1">Etudiant</option>
+              <option value="2" selected>Professeur</option>
+              <option value="3">Administrateur</option>
             </select>
           </div>
         </div>

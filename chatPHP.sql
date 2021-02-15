@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : sam. 13 fév. 2021 à 21:47
+-- Généré le : lun. 15 fév. 2021 à 20:28
 -- Version du serveur :  8.0.23-0ubuntu0.20.04.1
 -- Version de PHP : 7.4.3
 
@@ -31,6 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `article` (
   `id` int NOT NULL,
   `idUser` int NOT NULL,
+  `objet` varchar(100) NOT NULL,
   `article` text NOT NULL,
   `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -133,6 +134,7 @@ CREATE TABLE `user` (
   `prenom` char(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `mdp` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `profile` varchar(50) NOT NULL,
   `idType` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -140,15 +142,15 @@ CREATE TABLE `user` (
 -- Déchargement des données de la table `user`
 --
 
-INSERT INTO `user` (`id`, `nom`, `prenom`, `email`, `mdp`, `idType`) VALUES
-(1, 'RAJAONARIVONY', 'Rivo Lalaina', 'rivo2302@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 3),
-(2, 'BOTORAVONY', 'Arlème Johnson', 'rootkit7628@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 2),
-(3, 'ANONA', 'Tréal Darcia', 'darcia2302@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 1),
-(4, 'ANDRIAMASY Miadantsoa', 'Salema', 'salema@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 1),
-(5, 'TAFITASOA', 'Fabrice', 'fabrice@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 2),
-(6, 'RAVOLOLONIRINA', 'Angela', 'angela@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 2),
-(7, 'RASOANAIVO', 'Kanto', 'kanto@esti.mg', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 1),
-(8, 'RAJERISON', 'Fabien Julio', 'fabien53@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 3);
+INSERT INTO `user` (`id`, `nom`, `prenom`, `email`, `mdp`, `profile`, `idType`) VALUES
+(1, 'RAJAONARIVONY', 'Rivo Lalaina', 'rivo2302@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', '', 3),
+(2, 'BOTORAVONY', 'Arlème Johnson', 'rootkit7628@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', '', 2),
+(3, 'ANONA', 'Tréal Darcia', 'darcia2302@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', '', 1),
+(4, 'ANDRIAMASY Miadantsoa', 'Salema', 'salema@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', '', 1),
+(5, 'TAFITASOA', 'Fabrice', 'fabrice@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', '', 2),
+(6, 'RAVOLOLONIRINA', 'Angela', 'angela@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', '', 2),
+(7, 'RASOANAIVO', 'Kanto', 'kanto@esti.mg', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', '', 1),
+(8, 'RAJERISON', 'Fabien Julio', 'fabien53@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', '', 3);
 
 --
 -- Index pour les tables déchargées
