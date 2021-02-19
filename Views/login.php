@@ -6,7 +6,7 @@
   </head>
   <body>
   		<!--
-  	 	📝 Login form for the estics-Blog 📝
+  	 	  📝 Login form for the estics-Blog 📝
   	 -->
     <main>
       <div id="container">

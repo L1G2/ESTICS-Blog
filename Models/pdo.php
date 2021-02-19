@@ -2,7 +2,7 @@
 
     class CONNECT_BDD{
         public function dbConnect(){
-            // Les configurations de la base de donnée
+            // Les configurations de la base de donnéeacceuil.php#
   
             $DB_HOST = 'localhost';
             $DB_USER = 'myadmin';

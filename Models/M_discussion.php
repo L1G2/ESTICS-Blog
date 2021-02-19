@@ -50,8 +50,9 @@ class message extends CONNECT_BDD
     }
 
     /*
-        Une fonction qui retourne les dix dernier discussion d'une personne , du discussion ou y a encore des 
-    messages non vue jusqu'au discussion ,on on a déja vue tout les textes .(comme messeger ;-) )
+            Une fonction qui retourne les dix dernier discussion d'une personne ,
+        du discussion ou y a encore des messages non vue jusqu'au discussion ,
+        on on a déja vue tout les textes .(comme messeger ;-) )
     */
     public function check_new_message ($id){
         $bdd = $this -> dbconnect();

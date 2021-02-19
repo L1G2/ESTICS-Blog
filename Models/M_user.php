@@ -20,7 +20,7 @@ class user extends CONNECT_BDD
         Une fonction qui récupère la liste des users, soit étudiant  soit administrateur  ,
         soit un professeur. Elle prend en paramètre: 
             1= listes es etudiants 
-            2= listes des  professeurs, 
+            
             3= liste des aadministrateurs
         Il retourne trois tableaux : Les numéros, Les noms , les prenoms, les emails
    */
@@ -39,9 +39,30 @@ class user extends CONNECT_BDD
             array_push($prenom, $data["prenom"]);
             array_push($email, $data["email"]);
         }
-        return [$nom, $prenom, $email];
+        return [$numero, $nom, $prenom, $email];
    }
+   /*
+        Une fonction qui va récuperer la liste des professeurs ainsi que les cours qu'ils occuppent
+   */
+    public function listeProfesseur () {
+        $bdd = $this -> dbConnect();
+        $query = $bdd -> prepare ("SELECT U.id, U.nom ,prenom ,email, C.nom AS cours   FROM user U INNER JOIN cours  C ON C.idUser = U.id INNER JOIN type T ON T.id = U.idType WHERE T.id  = 2");
+        $query -> execute (array ($type,));
+        $numero = array();
+        $nom = array ();
+        $email = array ();
+        $prenom = array ();
+        $ours= array ();
 
+        while ( $data = $query -> fetch()){
+            array_push($numero, $data["id"]);
+            array_push($nom, $data["nom"]);
+            array_push($prenom, $data["prenom"]);
+            array_push($email, $data["email"]);
+            array_push($cours, $data["cours"]);
+        }
+        return [$numero, $nom, $prenom, $email, $cours];
+    }
    /*
         Une fonction de récuperer les details sur un user en particulier.
    */
