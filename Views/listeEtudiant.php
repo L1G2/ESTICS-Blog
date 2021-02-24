@@ -1,7 +1,4 @@
-<?php
-    require_once("../Models/M_user.php");
-    $user = new  user ();
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +19,7 @@
         </th>
         
         <?php
-            $data = $user -> liste (1);
+            $data = $etudiants;
 
             foreach ($data[0] as $key => $value) {
                 echo "
@@ -31,7 +28,7 @@
                             <td>". $data[1][$key] ."</td>
                             <td>". $data[2][$key] ."</td>
                             <td>". $data[3][$key] ."</td>
-                            <td> <a href='  /Views/modifier.php?id=" .$data[0][$key]. "'>Modifier</a> <a href='/Models/M_user.php?id=" .$data[0][$key]. "'>Supprimer</a></td>
+                            <td> <a href='/Controller/C_user.php?action=modifier&id=" .$data[0][$key]. "'>Modifier</a> <a href='/Controller/C_user.php?action=supprimer&id=" .$data[0][$key]. "'>Supprimer</a></td>
                         
                         </tr>
                 ";

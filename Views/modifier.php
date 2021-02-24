@@ -8,18 +8,15 @@
 </head>
 <body>
     <?php
-        require_once ("../Models/M_user.php");
-        if (isset( $_GET["id"])) {
-            # code...
-            echo "rivo";
-            $id = $_GET["id"];
-            $user = new user ();
-            $details = $user -> details ($id);
-            echo "rivo";
-            
-        }
+       
+        var_dump($details);
+    
     ?>
-    <form action="/" method="post"></form>
+    <form action="/Controller/C_user.php?action=update" method="post">
+        
+    <h1>Tonga ato am le modifier.ph</h1>
+
+    </form>
 
 </body>
 </html>
