@@ -56,13 +56,16 @@
         $user = new user();
         $login = $user -> signIn( $email, $mdp, $type);
 
-        echo ($login);
+
         if(isset($login) ){
             header('Location: index.php?action=accueil.php');
+            session_start();
+            
 
         } 
         else{
             header('Location: index.php');
+
         }
     
     }

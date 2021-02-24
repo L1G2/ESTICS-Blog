@@ -1,10 +1,16 @@
 <?php
 	require_once ("Controller/controller.php");
 
+	/*
+		Récupérer l'action de l'utilisateur
+	*/
 	if(!empty($_GET["action"])){
 		$action = $_GET["action"];
+
 		if ($action == "login"){
-			echo ("lo");
+			/*
+				Si l'utilisateur veut se connecter
+			*/
 			if (isset( $_POST["email"])&& isset( $_POST["mdp"])&& isset( $_POST["type"])){
 				echo ("test");
 				$email = $_POST["email"];
@@ -14,6 +20,7 @@
 
 			}
 		}
+
 		elseif ($action == "liste_etudiant"){
 			liste_etudiant();
 		}

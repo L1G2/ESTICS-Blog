@@ -4,6 +4,11 @@ require_once("pdo.php");
 
 class cours extends CONNECT_BDD
 {
+
+
+    /*
+        Voir la liste des cours disponible
+    */
     public function liste_cours (){
         $bdd = $this -> dbConnect();
         $query = $bdd->query("SELECT nom,id FROM cours WHERE idUser IS NULL");
@@ -15,6 +20,10 @@ class cours extends CONNECT_BDD
         }
         return [$id, $cours];
     }
+
+    /*
+        Mettre à jour l'id  de professeur qui occupe le cours
+    */
     public function update_professeur ($idUser, $id){
         $bdd = $this -> dbConnect();
         $query = $bdd->prepare("UPDATE cours SET idUser=?  WHERE id=? ");
