@@ -15,11 +15,12 @@
             <td>Nom</td>
             <td>Prenom</td>
             <td>Email</td>
+            <td>Cours</td>
             <td>Opération</td>
         </th>
         
         <?php
-            $data = $etudiants;
+            $data = $professeurs;
 
             foreach ($data[0] as $key => $value) {
                 echo "
@@ -28,11 +29,12 @@
                             <td>". $data[1][$key] ."</td>
                             <td>". $data[2][$key] ."</td>
                             <td>". $data[3][$key] ."</td>
-                            <td> <a href='?action=modifier&type=etudiant&id=" .$data[0][$key]. "'>Modifier</a> <a href='?action=supprimer&type=etudiant&id=" .$data[0][$key]. "'>Supprimer</a></td>
+                            <td>". $data[4][$key] ."</td>
+                            <td> <a href='?action=modifier&type=professeur&id=" .$data[0][$key]."'>Modifier</a> <a href='?action=supprimer&type=professeur&id=" .$data[0][$key]. "'>Supprimer</a></td>
                         
                         </tr>
                 ";
-            }
+            }professeur
         ?>
             
     </table>

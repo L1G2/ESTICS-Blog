@@ -52,7 +52,7 @@ class user extends CONNECT_BDD
         $nom = array ();
         $email = array ();
         $prenom = array ();
-        $ours= array ();
+        $cours= array ();
 
         while ( $data = $query -> fetch()){
             array_push($numero, $data["id"]);

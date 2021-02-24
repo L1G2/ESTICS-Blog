@@ -9,33 +9,48 @@
 
 		}
 		elseif ($action == "liste_etudiant"){
-			if (isset( $_GET["id"])) {
-				# code...
-				$id = $_GET["id"];
-				$user = new user ();
-				$details = $user -> details ($id);       
-				header("location:../Views/modifier.php");
-			}
+			liste_etudiant();
 		}
-
+		elseif ($action == "liste_professeur"){
+			liste_professeur();
+		}
 		elseif ($action == "modifier"){
 			if (isset( $_GET["id"])) {
 				# code...
 				$id = $_GET["id"];
-				$user = new user ();
-				$details = $user -> details ($id);       
-				header("location:../Views/modifier.php");
+				modifier ($id);
 			}
 		}
 		elseif ($action == "supprimer"){
 			if (isset( $_GET["id"])) {
-				# code...
 				$id = $_GET["id"];
-				$user = new user ();
-				$user -> delete ($id);      
+				if (isset( $_GET["type"])) {
+					$type = $_GET["type"];
+					 if ($type =="professeur"){
+						supprimer ($id, "liste_professeur");
+					 }
+					 if ($type =="etudiant"){
+						supprimer ($id, "liste_etudiant");
+					}
 				
-				header("location:../Views/liste.php");
-			}       
+				}
+			}	
+		}
+		elseif ($action == "update"){
+
+			echo "1";
+			if (isset( $_POST["id"])) {
+				echo "2";
+				$id = $_POST["id"];
+				if (isset( $_POST["nom"])&& isset( $_POST["prenom"])&& isset( $_POST["email"])&& isset( $_POST["type"])){
+					echo "3";
+					$nom =  $_POST["nom"];
+					$prenom =$_POST["prenom"];
+					$email = $_POST["email"];
+					$type = $_POST["type"];
+					update($id, $nom , $prenom ,$email,$type);
+				}
+			}	
 		}
 	}   
 	else{  

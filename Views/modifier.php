@@ -8,14 +8,18 @@
 </head>
 <body>
     <?php
-       
-        var_dump($details);
-    
+        $type = $_GET["type"];
     ?>
-    <form action="/Controller/C_user.php?action=update" method="post">
-        
-    <h1>Tonga ato am le modifier.ph</h1>
 
+    <h1>Formulaire de modification</h1>
+    <form action="index.php?action=update" method="post"> 
+    <input type="hidden" name="type" value = <?= $type?>>
+        <input type="hidden" name="id"value = <?=$details[0]?>>       
+        Nom = <input type="text" name="nom" id="" value = <?=$details[1]?>> 
+        Prenom  =  <input type="text" name="prenom" id="" value = <?=$details[2]?>> 
+        email =  <input type="text" name="email" id="" value = <?=$details[3]?>> 
+        <br>
+         <input type="submit" value="Modifier">         
     </form>
 
 </body>
