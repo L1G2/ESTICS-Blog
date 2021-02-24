@@ -72,6 +72,8 @@
             $_SESSION ["prenom"] = $login[2];
             $_SESSION ["type"] = $login[3];
             $_SESSION ["idType"] = $login[4];
+            $_SESSION ["email"] = $login[5];
+            $_SESSION ["profile"] = $login[6];
 
             header("location:index.php?action=".$login[3]);
                 

@@ -9,7 +9,7 @@ class user extends CONNECT_BDD
     */
     public function signIn( $email, $mdp, $type){
         $bdd = $this -> dbConnect();
-        $sql = $bdd -> prepare ("SELECT U.id,U.nom, U.prenom , T.nom as type,T.id as idType FROM user U INNER JOIN type T ON T.id = U.idType WHERE email = ? AND  mdp = SHA1(?) AND T.id  = ?");
+        $sql = $bdd -> prepare ("SELECT U.id,U.nom, U.prenom ,U.email, T.nom     as type,T.id as idType ,profile  FROM user U INNER JOIN type T ON T.id = U.idType WHERE email = ? AND  mdp = SHA1(?) AND T.id  = ?");
         $sql -> execute (array ($email, $mdp, $type));  
         $result = array();      
         if ($sql -> rowCount() == 1){
@@ -19,6 +19,8 @@ class user extends CONNECT_BDD
             array_push($result, $info["prenom"]);
             array_push($result, $info["type"]);
             array_push($result, $info["idType"]);
+            array_push($result, $info["email"]);
+            array_push($result, $info["profile"]);
             return $result;
         }    
    }    

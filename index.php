@@ -4,6 +4,7 @@
 	/*
 		Récupérer l'action de l'utilisateur
 	*/
+	session_start();
 	if(!empty($_GET["action"])){
 		$action = $_GET["action"];
 
@@ -36,6 +37,11 @@
 		}
 		elseif ($action == "liste_professeur"){
 			liste_professeur();
+		}
+		elseif ($action == "deconnecter"){
+			session_destroy();
+			home();
+
 		}
 		elseif ($action == "modifier"){
 			if (isset( $_GET["id"])) {
