@@ -37,6 +37,5 @@
             
     </table>
             <a href="?action=ajouterEtudiant&type=1">Ajouter</a>
-
 </body>
 </html>

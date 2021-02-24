@@ -6,10 +6,13 @@
     function home(){
         require("Views/login.php");
     }
+    function administrateur(){
+        require("Views/admin.php");
+    }
     function liste_etudiant(){
         $user = new user();
         $etudiants = $user -> liste(1);
-        require("Views/listeEtudiant.php");
+        require("Views/admin.php");
     }  
     function liste_professeur(){
         $user = new user();
@@ -56,16 +59,19 @@
         $user = new user();
         $login = $user -> signIn( $email, $mdp, $type);
 
-
         if(isset($login) ){
-            header('Location: index.php?action=accueil.php');
-            session_start();
-            
-
+            if($type==1){
+                header("location:index.php?action=etudiant");
+            }
+            elseif($type==2){
+                header("location:index.php?action=professeur");
+            }
+            elseif($type==3){
+                header("location:index.php?action=administrateur");
+            }
         } 
         else{
             header('Location: index.php');
 
         }
-    
     }

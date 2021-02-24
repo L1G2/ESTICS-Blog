@@ -4,14 +4,14 @@
   <head lang="fr">
   	<title>ESTI | Login</title>
 	<meta charset="utf-8">
-  	<link rel="stylesheet" type="text/css" href="../Assets/css/admin.css">
+  	<link rel="stylesheet" type="text/css" href="Assets/css/admin.css">
   </head>
   <body>
 	<header id="header">
 		<nav class="nav">
 			<div id="container-user">
 				<div id="user-avatar">
-					<img src="../Assets/img/avatar.png" id="avatar" alt="-votre-avatar">
+					<img src="Assets/img/avatar.png" id="avatar" alt="-votre-avatar">
 				</div>
 				<div id="user-info">
 					<h4 id="name">Arlème Johson</h4>
@@ -52,62 +52,31 @@
 				<li style="	float: right;"><h4><a href="#">Liste des profésseur</a></h4></li>
 			</ul>
 			<div>
-			<table id="tableau">
-				<tr>
-				  <th>Numero</th>
-				  <th>Nom et Prénom</th>
-				  <th>Email</th>
-				  <th>Modifier | Supprimer</th>
-				</tr>
-				<tr>
-					<td>01</td>
-					<td>Arlème Johnson</td>
-					<td>arleme.dev7@gmail.com</td>
-					<td><a>Supprimer</a> | <a>Modifier</a></td>	
-				</tr>
-				<tr>
-					<td>01</td>
-					<td>Arlème Johnson</td>
-					<td>arleme.dev7@gmail.com</td>
-					<td><a>Supprimer</a> | <a>Modifier</a></td>	
-				</tr>
-				<tr>
-					<td>01</td>
-					<td>Arlème Johnson</td>
-					<td>arleme.dev7@gmail.com</td>
-					<td><a>Supprimer</a> | <a>Modifier</a></td>	
-				</tr>
-				<tr>
-					<td>01</td>
-					<td>Arlème Johnson</td>
-					<td>arleme.dev7@gmail.com</td>
-					<td><a>Supprimer</a> | <a>Modifier</a></td>	
-				</tr>
-				<tr>
-					<td>01</td>
-					<td>Arlème Johnson</td>
-					<td>arleme.dev7@gmail.com</td>
-					<td><a>Supprimer</a> | <a>Modifier</a></td>	
-				</tr>
-				<tr>
-					<td>01</td>
-					<td>Arlème Johnson</td>
-					<td>arleme.dev7@gmail.com</td>
-					<td><a>Supprimer</a> | <a>Modifier</a></td>	
-				</tr>
-				<tr>
-					<td>01</td>
-					<td>Arlème Johnson</td>
-					<td>arleme.dev7@gmail.com</td>
-					<td><a>Supprimer</a> | <a>Modifier</a></td>	
-				</tr>
-				<tr>
-					<td>01</td>
-					<td>Arlème Johnson</td>
-					<td>arleme.dev7@gmail.com</td>
-					<td><a>Supprimer</a> | <a>Modifier</a></td>	
-				</tr>
-			  </table>
+				<table id="tableau">
+					<tr>
+						<th>Num</th>
+						<th>Nom</th>
+						<th>Prenom</th>
+						<th>Email</th>
+						<th>Opération</th>
+					</tr>
+					
+					<?php
+						$data = $etudiants;
+						foreach ($data[0] as $key => $value) {
+							echo "
+									<tr>
+										<td>". $data[0][$key] ."</td>
+										<td>". $data[1][$key] ."</td>
+										<td>". $data[2][$key] ."</td>
+										<td>". $data[3][$key] ."</td>
+										<td> <a href='?action=modifier&type=etudiant&id=" .$data[0][$key]. "'>Modifier</a> <a href='?action=supprimer&type=etudiant&id=" .$data[0][$key]. "'>Supprimer</a></td>
+									
+									</tr>
+							";
+						}
+					?>
+    			</table>
 			</div>
 		</section>
 	</main> 

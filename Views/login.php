@@ -2,7 +2,7 @@
 <html>
   <head>
   	<title>ESTI | Login</title>
-  	<link rel="stylesheet" type="text/css" href="../Assets/css/login.css">
+  	<link rel="stylesheet" type="text/css" href="Assets/css/login.css">
   </head>
   <body>
   		<!--
@@ -12,7 +12,7 @@
       <div id="container">
         <h2 class="title">Se connecter</h2>
         <div>
-          <img src="../Assets/img/logo.png" id="logo" alt="Logo ESTI"/>
+          <img src="Assets/img/logo.png" id="logo" alt="Logo ESTI"/>
         </div>
 
         <!-- Login Form -->

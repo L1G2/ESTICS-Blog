@@ -34,7 +34,7 @@ CREATE TABLE `article` (
   `objet` varchar(100) NOT NULL,
   `article` text NOT NULL,
   `date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -45,7 +45,7 @@ CREATE TABLE `article` (
 CREATE TABLE `categorie` (
   `id` int NOT NULL,
   `nom` char(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `categorie`
@@ -68,7 +68,7 @@ CREATE TABLE `cours` (
   `nom` varchar(50) NOT NULL,
   `idUser` int DEFAULT NULL,
   `idCategorie` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `cours`
@@ -94,7 +94,7 @@ CREATE TABLE `discussion` (
   `message` text NOT NULL,
   `visibilite` tinyint NOT NULL DEFAULT '0',
   `date` datetime NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `discussion`
@@ -122,7 +122,7 @@ CREATE TABLE `options` (
   `id` int NOT NULL,
   `nom` varchar(50) NOT NULL,
   `idType` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `options`
@@ -145,7 +145,7 @@ INSERT INTO `options` (`id`, `nom`, `idType`) VALUES
 CREATE TABLE `type` (
   `id` int NOT NULL,
   `nom` char(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `type`
@@ -167,10 +167,10 @@ CREATE TABLE `user` (
   `nom` char(50) NOT NULL,
   `prenom` char(50) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `mdp` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `profile` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `mdp` varchar(250) CHARACTER SET utf8mb4 NOT NULL,
+  `profile` varchar(50) CHARACTER SET utf8mb4 DEFAULT NULL,
   `idType` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `user`
