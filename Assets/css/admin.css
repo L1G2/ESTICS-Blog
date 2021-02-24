@@ -38,7 +38,7 @@ body {
     box-shadow: 0 20px 30px 0 rgba(0,0,0,0.3);
 }
 #container-user{
-    width: 30%;
+    width: 50%;
     float: left;
 }
 #user-avatar{
@@ -101,22 +101,22 @@ section>ul{
 }
 
 /* Tableau */
-#customers {
+#tableau {
     border-collapse: collapse;
     width: 90%;
     margin-left: 5%;
   }
 
-#customers td, #customers th {
+#tableau td, #tableau th {
     border: 1px solid #ddd;
     padding: 10px;
 }
 
-#customers tr:nth-child(even){background-color: #f2f2f2;}
+#tableau tr:nth-child(even){background-color: #f2f2f2;}
 
-#customers tr:hover {background-color: #ddd;}
+#tableau tr:hover {background-color: #ddd;}
   
-#customers th {
+#tableau th {
     padding-top: 12px;
     padding-bottom: 12px;
     background-color: #5fbae9;
