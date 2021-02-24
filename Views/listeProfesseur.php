@@ -38,5 +38,6 @@
         ?>
             
     </table>
+    <a href="?action=ajouterProfesseur&type=2">Ajouter</a>
 </body>
 </html>

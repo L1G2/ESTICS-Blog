@@ -114,7 +114,21 @@ class user extends CONNECT_BDD
         $bdd = $this -> dbConnect();
         $query = $bdd -> prepare ("UPDATE user SET profile = ? WHERE id = ? ");
         $query -> execute (array ($profile,$id));
+        
    }   
+   public function lastId (){
+        $bdd = $this -> dbConnect();
+        $sql = $bdd -> prepare ("SELECT max(id)  FROM user ");
+        $sql -> execute ();        
+        if ($sql -> rowCount() == 1){
+            $info = $sql -> fetch();
+            return $info[0];
+        }        
+   }
 
 }
 
+$user = new user();
+
+$id = $user -> lastId();
+echo ($id);

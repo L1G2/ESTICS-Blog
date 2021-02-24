@@ -1,5 +1,6 @@
 <?php
     require_once ("Models/M_user.php");
+    require_once ("Models/M_cours.php");
     
    
     function home(){
@@ -46,9 +47,16 @@
     function ajouterProfesseur(){
         require("Views/ajouterProfesseur.php");
     }
-    function insertProfesseur($nom, $prenom, $email, $mdp){
+    function insertProfesseur($nom, $prenom, $email, $mdp, $cours){
         $user = new user();
-        $insert = $user -> inserer($nom, $prenom, $email, $mdp,1);
+        $insert = $user -> inserer($nom, $prenom, $email, $mdp,2);
+
+        $id = $user -> lastId();
+
         
-        header('Location: index.php?action=liste_etudiant');
+
+        $course = new cours();
+        $update = $course ->update_professeur ($id, $cours);
+
+        header('Location: index.php?action=liste_professeur');
     }
