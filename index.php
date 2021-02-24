@@ -16,12 +16,23 @@
 				$email = $_POST["email"];
 				$mdp =  $_POST["mdp"];
 				$type  =  $_POST["type"];
-				accueil( $email, $mdp, $type);
+				accueil( $email, $mdp, $type);		
 			}
+		}
+		elseif ($action == "ajouterProfesseur"){
+			ajouterProfesseur();
 		}
 		elseif ($action == "administrateur"){
 			administrateur();
-			liste_etudiant();
+		}
+		elseif ($action == "ajouterEtudiant"){
+			ajouterEtudiant();
+		}
+		elseif ($action == "professeur"){
+			professeur();
+		}
+		elseif ($action == "etudiant"){
+			etudiant();
 		}
 		elseif ($action == "liste_professeur"){
 			liste_professeur();
@@ -61,9 +72,7 @@
 				}
 			}	
 		}
-		elseif ($action == "ajouterEtudiant"){
-			ajouterEtudiant();
-		}
+
 		elseif ($action == "insererEtudiant"){
 
 
@@ -75,9 +84,7 @@
 				insertEtudiant($nom, $prenom, $email, $mdp);	
 			}
 		}	
-		elseif ($action == "ajouterProfesseur"){
-			ajouterProfesseur();
-		}
+
 		elseif ($action == "insererProfesseur"){
 			if (isset( $_POST["nom"])&& isset( $_POST["prenom"])&& isset( $_POST["email"])&& isset( $_POST["mdp"])){
 				$nom =  $_POST["nom"];

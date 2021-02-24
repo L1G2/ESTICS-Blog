@@ -5,9 +5,9 @@
             // Les configurations de la base de donnéeacceuil.php#
   
             $DB_HOST = 'localhost';
-            $DB_USER = 'offman';
-            $DB_PASS = 'offman';
-            $DB_NAME = 'ESTICS';
+            $DB_USER = 'myadmin';
+            $DB_PASS = 'myadmin';
+            $DB_NAME = 'chatPHP';
             
             try{
                 $pdo = new PDO("mysql:host=" . $DB_HOST . ";dbname=" . $DB_NAME, $DB_USER, $DB_PASS);

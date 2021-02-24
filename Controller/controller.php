@@ -7,7 +7,13 @@
         require("Views/login.php");
     }
     function administrateur(){
-        require("Views/admin.php");
+        require("Views/homeAdmin.php");
+    }
+    function etudiant(){
+        require("Views/homeEtudiant.php");
+    }
+    function professeur(){
+        require("Views/homeProfesseur.php");
     }
     function liste_etudiant(){
         $user = new user();
@@ -60,15 +66,15 @@
         $login = $user -> signIn( $email, $mdp, $type);
 
         if(isset($login) ){
-            if($type==1){
-                header("location:index.php?action=etudiant");
-            }
-            elseif($type==2){
-                header("location:index.php?action=professeur");
-            }
-            elseif($type==3){
-                header("location:index.php?action=administrateur");
-            }
+            session_start ();
+            $_SESSION ["id"] = $login[0];
+            $_SESSION ["nom"] = $login[1];
+            $_SESSION ["prenom"] = $login[2];
+            $_SESSION ["type"] = $login[3];
+            $_SESSION ["idType"] = $login[4];
+
+            header("location:index.php?action=".$login[3]);
+                
         } 
         else{
             header('Location: index.php');

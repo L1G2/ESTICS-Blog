@@ -84,6 +84,8 @@ class user extends CONNECT_BDD
         array_push($result, $query["prenom"]);
         array_push($result, $query["email"]);
         
+
+
         return $result;
    }
 
@@ -103,6 +105,9 @@ class user extends CONNECT_BDD
         $bdd = $this -> dbconnect();
         $query = $bdd -> prepare ("DELETE FROM user WHERE user.id = ?");
         $query -> execute(array($id, ));
+
+        $track = $bdd -> prepare ("UPDATE cours as C SET C.idUser = null where  not EXISTS (SELECT * from user U where U.id = C.idUser)");
+        $track -> execute();
     }
     /*
         Une fonction pour insérer des lignes dans la table users
