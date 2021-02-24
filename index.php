@@ -10,10 +10,10 @@
 				$mdp =  $_POST["mdp"];
 				$type  =  $_POST["type"];
 				accueil( $email, $mdp, $type);
-
 			}
 		}
-		elseif ($action == "liste_etudiant"){
+		elseif ($action == "administrateur"){
+			administrateur();
 			liste_etudiant();
 		}
 		elseif ($action == "liste_professeur"){
@@ -72,8 +72,6 @@
 			ajouterProfesseur();
 		}
 		elseif ($action == "insererProfesseur"){
-
-
 			if (isset( $_POST["nom"])&& isset( $_POST["prenom"])&& isset( $_POST["email"])&& isset( $_POST["mdp"])){
 				$nom =  $_POST["nom"];
 				$prenom =$_POST["prenom"];

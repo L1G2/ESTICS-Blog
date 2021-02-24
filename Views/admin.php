@@ -4,14 +4,14 @@
   <head lang="fr">
   	<title>ESTI | Login</title>
 	<meta charset="utf-8">
-  	<link rel="stylesheet" type="text/css" href="../Assets/css/admin.css">
+  	<link rel="stylesheet" type="text/css" href="Assets/css/admin.css">
   </head>
   <body>
 	<header id="header">
 		<nav class="nav">
 			<div id="container-user">
 				<div id="user-avatar">
-					<img src="../Assets/img/avatar.png" id="avatar" alt="-votre-avatar">
+					<img src="Assets/img/avatar.png" id="avatar" alt="-votre-avatar">
 				</div>
 				<div id="user-info">
 					<h4 id="name">Arlème Johson</h4>
@@ -53,17 +53,16 @@
 			</ul>
 			<div>
 				<table id="tableau">
-					<th>
-						<td>Num</td>
-						<td>Nom</td>
-						<td>Prenom</td>
-						<td>Email</td>
-						<td>Opération</td>
-					</th>
+					<tr>
+						<th>Num</th>
+						<th>Nom</th>
+						<th>Prenom</th>
+						<th>Email</th>
+						<th>Opération</th>
+					</tr>
 					
 					<?php
 						$data = $etudiants;
-
 						foreach ($data[0] as $key => $value) {
 							echo "
 									<tr>
