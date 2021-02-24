@@ -10,16 +10,12 @@
         $user = new user();
         $etudiants = $user -> liste(1);
         require("Views/listeEtudiant.php");
-    }
-    
+    }  
     function liste_professeur(){
         $user = new user();
         $professeurs = $user -> listeProfesseur();
         require("Views/listeProfesseur.php");
-
-    }
-    
-    
+    }  
     function modifier($id){
         $user = new user();
         $details = $user -> details($id);
@@ -50,13 +46,23 @@
     function insertProfesseur($nom, $prenom, $email, $mdp, $cours){
         $user = new user();
         $insert = $user -> inserer($nom, $prenom, $email, $mdp,2);
-
         $id = $user -> lastId();
-
-        
-
         $course = new cours();
         $update = $course ->update_professeur ($id, $cours);
 
         header('Location: index.php?action=liste_professeur');
+    }
+    function accueil( $email, $mdp, $type){
+        $user = new user();
+        $login = $user -> signIn( $email, $mdp, $type);
+
+        echo ($login);
+        if(isset($login) ){
+            header('Location: index.php?action=accueil.php');
+
+        } 
+        else{
+            header('Location: index.php');
+        }
+    
     }

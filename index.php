@@ -4,7 +4,14 @@
 	if(!empty($_GET["action"])){
 		$action = $_GET["action"];
 		if ($action == "login"){
+			if (isset( $_POST["email"])&& isset( $_POST["mdp"])&& isset( $_POST["type"])){
+				echo ("test");
+				$email = $_POST["email"];
+				$mdp =  $_POST["mdp"];
+				$type  =  $_POST["type"];
+				accueil( $email, $mdp, $type);
 
+			}
 		}
 		elseif ($action == "liste_etudiant"){
 			liste_etudiant();

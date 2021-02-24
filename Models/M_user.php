@@ -9,11 +9,17 @@ class user extends CONNECT_BDD
     */
     public function signIn( $email, $mdp, $type){
         $bdd = $this -> dbConnect();
-        $sql = $bdd -> prepare ("SELECT id  FROM user U INNER JOIN type T ON T.id = U.idType WHERE email = ? AND  mdp = SHA1(?) AND T.id  = ?");
-        $sql -> execute (array ($email, $mdp, $type));        
+        $sql = $bdd -> prepare ("SELECT U.id,U.nom, U.prenom , T.nom as type,T.id as idType FROM user U INNER JOIN type T ON T.id = U.idType WHERE email = ? AND  mdp = SHA1(?) AND T.id  = ?");
+        $sql -> execute (array ($email, $mdp, $type));  
+        $result = array();      
         if ($sql -> rowCount() == 1){
             $info = $sql -> fetch();
-            return $info[0];
+            array_push($result, $info["id"]);
+            array_push($result, $info["nom"]);
+            array_push($result, $info["prenom"]);
+            array_push($result, $info["type"]);
+            array_push($result, $info["idType"]);
+            return $result;
         }    
    }    
    /*
@@ -128,7 +134,4 @@ class user extends CONNECT_BDD
 
 }
 
-$user = new user();
 
-$id = $user -> lastId();
-echo ($id);
