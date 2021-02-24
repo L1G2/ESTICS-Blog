@@ -20,9 +20,7 @@
           <input type="email" id="login" name="email" placeholder="Email ESTI" autocomplete="off">
           <input type="password" id="password" name="mdp" placeholder="Mot de passe">
           <input type="submit" value="connexion">
-        </form>
 
-        <!-- Select rôle -->
           <div id="banner">
             <select class="select" name = "type">
               <option value="1">Etudiant</option>
@@ -30,6 +28,10 @@
               <option value="3">Administrateur</option>
             </select>
           </div>
+        </form>
+
+        <!-- Select rôle -->
+
         </div>
       </div>
     </main>
