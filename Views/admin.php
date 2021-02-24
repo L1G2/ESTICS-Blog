@@ -52,62 +52,32 @@
 				<li style="	float: right;"><h4><a href="#">Liste des profésseur</a></h4></li>
 			</ul>
 			<div>
-			<table id="tableau">
-				<tr>
-				  <th>Numero</th>
-				  <th>Nom et Prénom</th>
-				  <th>Email</th>
-				  <th>Modifier | Supprimer</th>
-				</tr>
-				<tr>
-					<td>01</td>
-					<td>Arlème Johnson</td>
-					<td>arleme.dev7@gmail.com</td>
-					<td><a>Supprimer</a> | <a>Modifier</a></td>	
-				</tr>
-				<tr>
-					<td>01</td>
-					<td>Arlème Johnson</td>
-					<td>arleme.dev7@gmail.com</td>
-					<td><a>Supprimer</a> | <a>Modifier</a></td>	
-				</tr>
-				<tr>
-					<td>01</td>
-					<td>Arlème Johnson</td>
-					<td>arleme.dev7@gmail.com</td>
-					<td><a>Supprimer</a> | <a>Modifier</a></td>	
-				</tr>
-				<tr>
-					<td>01</td>
-					<td>Arlème Johnson</td>
-					<td>arleme.dev7@gmail.com</td>
-					<td><a>Supprimer</a> | <a>Modifier</a></td>	
-				</tr>
-				<tr>
-					<td>01</td>
-					<td>Arlème Johnson</td>
-					<td>arleme.dev7@gmail.com</td>
-					<td><a>Supprimer</a> | <a>Modifier</a></td>	
-				</tr>
-				<tr>
-					<td>01</td>
-					<td>Arlème Johnson</td>
-					<td>arleme.dev7@gmail.com</td>
-					<td><a>Supprimer</a> | <a>Modifier</a></td>	
-				</tr>
-				<tr>
-					<td>01</td>
-					<td>Arlème Johnson</td>
-					<td>arleme.dev7@gmail.com</td>
-					<td><a>Supprimer</a> | <a>Modifier</a></td>	
-				</tr>
-				<tr>
-					<td>01</td>
-					<td>Arlème Johnson</td>
-					<td>arleme.dev7@gmail.com</td>
-					<td><a>Supprimer</a> | <a>Modifier</a></td>	
-				</tr>
-			  </table>
+				<table id="tableau">
+					<th>
+						<td>Num</td>
+						<td>Nom</td>
+						<td>Prenom</td>
+						<td>Email</td>
+						<td>Opération</td>
+					</th>
+					
+					<?php
+						$data = $etudiants;
+
+						foreach ($data[0] as $key => $value) {
+							echo "
+									<tr>
+										<td>". $data[0][$key] ."</td>
+										<td>". $data[1][$key] ."</td>
+										<td>". $data[2][$key] ."</td>
+										<td>". $data[3][$key] ."</td>
+										<td> <a href='?action=modifier&type=etudiant&id=" .$data[0][$key]. "'>Modifier</a> <a href='?action=supprimer&type=etudiant&id=" .$data[0][$key]. "'>Supprimer</a></td>
+									
+									</tr>
+							";
+						}
+					?>
+    			</table>
 			</div>
 		</section>
 	</main> 
