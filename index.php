@@ -4,6 +4,7 @@
 	if(!empty($_GET["action"])){
 		$action = $_GET["action"];
 		if ($action == "login"){
+			echo ("lo");
 			if (isset( $_POST["email"])&& isset( $_POST["mdp"])&& isset( $_POST["type"])){
 				echo ("test");
 				$email = $_POST["email"];
