@@ -7,13 +7,10 @@
     <title>Document</title>
 </head>
 <body>
-    <?php
-        $type = $_GET["type"];
-    ?>
 
     <h1>Formulaire de modification</h1>
     <form action="index.php?action=update" method="post"> 
-    <input type="hidden" name="type" value = <?= $type?>>
+    <input type="hidden" name="type" value = <?=  $_GET["type"]?>>
         <input type="hidden" name="id"value = <?=$details[0]?>>       
         Nom = <input type="text" name="nom" id="" value = <?=$details[1]?>> 
         Prenom  =  <input type="text" name="prenom" id="" value = <?=$details[2]?>> 

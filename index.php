@@ -3,8 +3,6 @@
 
 	if(!empty($_GET["action"])){
 		$action = $_GET["action"];
-		echo("rivo");
-
 		if ($action == "login"){
 
 		}
@@ -38,12 +36,9 @@
 		}
 		elseif ($action == "update"){
 
-			echo "1";
 			if (isset( $_POST["id"])) {
-				echo "2";
 				$id = $_POST["id"];
 				if (isset( $_POST["nom"])&& isset( $_POST["prenom"])&& isset( $_POST["email"])&& isset( $_POST["type"])){
-					echo "3";
 					$nom =  $_POST["nom"];
 					$prenom =$_POST["prenom"];
 					$email = $_POST["email"];
@@ -52,6 +47,21 @@
 				}
 			}	
 		}
+		elseif ($action == "ajouterEtudiant"){
+			ajouterEtudiant();
+		}
+		elseif ($action == "insererEtudiant"){
+
+
+			if (isset( $_POST["nom"])&& isset( $_POST["prenom"])&& isset( $_POST["email"])&& isset( $_POST["mdp"])){
+				$nom =  $_POST["nom"];
+				$prenom =$_POST["prenom"];
+				$email = $_POST["email"];
+				$mdp = $_POST["mdp"];
+				insertEtudiant($nom, $prenom, $email, $mdp);	
+			}
+		}	
+		
 	}   
 	else{  
 		home();

@@ -34,7 +34,7 @@
                         
                         </tr>
                 ";
-            }professeur
+            }
         ?>
             
     </table>

@@ -35,3 +35,20 @@
         $details = $user -> delete($id);
         header('Location: index.php?action='.$type);
     }
+    function ajouterEtudiant(){
+        require("Views/ajouterEtudiant.php");
+    }
+    function insertEtudiant($nom, $prenom, $email, $mdp){
+        $user = new user();
+        $insert = $user -> inserer($nom, $prenom, $email, $mdp,1);
+        header('Location: index.php?action=liste_etudiant');
+    }
+    function ajouterProfesseur(){
+        require("Views/ajouterProfesseur.php");
+    }
+    function insertProfesseur($nom, $prenom, $email, $mdp){
+        $user = new user();
+        $insert = $user -> inserer($nom, $prenom, $email, $mdp,1);
+        
+        header('Location: index.php?action=liste_etudiant');
+    }

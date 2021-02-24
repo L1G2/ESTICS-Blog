@@ -101,10 +101,10 @@ class user extends CONNECT_BDD
     /*
         Une fonction pour insérer des lignes dans la table users
     */  
-    public function inserer ($nom, $prenom, $email, $mdp, $idType, $profile){
+    public function inserer ($nom, $prenom, $email, $mdp, $idType){
         $bdd = $this -> dbconnect();
-        $query = $bdd -> prepare ("INSERT INTO user ( nom, prenom, email, mdp,profile,  idType) VALUES (?, ?, ?, SHA1(?), ?, ?)");
-        $query -> execute(array($nom, $prenom, $email, $mdp, $profile, $idType));
+        $query = $bdd -> prepare ("INSERT INTO user ( nom, prenom, email, mdp,  idType) VALUES (?, ?, ?, SHA1(?), ?)");
+        $query -> execute(array($nom, $prenom, $email, $mdp, $idType));
     }
 
     /*
