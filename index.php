@@ -38,6 +38,9 @@
 		elseif ($action == "liste_professeur"){
 			liste_professeur();
 		}
+		elseif ($action == "liste_etudiant"){
+			liste_etudiant	();
+		}
 		elseif ($action == "deconnecter"){
 			session_destroy();
 			home();

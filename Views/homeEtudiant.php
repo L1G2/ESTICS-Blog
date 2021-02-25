@@ -10,13 +10,19 @@
 		<header id="header">
 				<nav class="menu">
 					<img src="Assets/img/logo.png" id="logo" alt="Logo ESTI">
-					<a href="#" class="options">About us</a>
-					<a href="#" class="options">Message</a>
-					<a href="#"class="options">Proffesseur</a>
-					<a href="#" class="options">Etudiant</a>
-					<a href="#" class="options">Acceuil</a>
+					
+					<?php
+						require_once ("Models/M_options.php");
+						$type = $_SESSION["idType"];
+						$ls = $options -> list_option ($type);
+
+						foreach ($ls[0] as $key => $value) {
+							# code...
+							echo "<a href='".$ls[0][$key] ."'class='options'>".$ls[1][$key]."</a>";
+						}
+					?>
 				</nav>
-		</header>
+		</header>	
 
 		<div class="nav">
 			<div id="container-user">

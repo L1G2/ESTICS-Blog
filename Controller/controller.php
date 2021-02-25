@@ -18,7 +18,7 @@
     function liste_etudiant(){
         $user = new user();
         $etudiants = $user -> liste(1);
-        require("Views/admin.php");
+        require("Views/listeEtudiant.php");
     }  
     function liste_professeur(){
         $user = new user();
