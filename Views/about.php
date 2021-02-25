@@ -3,30 +3,36 @@
 	<head lang="fr">
 		<title>ESTI | Login</title>
 		<meta charset="utf-8">
-		<link rel="stylesheet" type="text/css" href="../Assets/css/template.css">
+		<link rel="stylesheet" type="text/css" href="Assets/css/template.css">
 	</head>
 
   	<body>
 		<header id="header">
 				<nav class="menu">
-					<img src="../Assets/img/logo.png" id="logo" alt="Logo ESTI">
-					<a href="#" class="options">About us</a>
-					<a href="#" class="options">Message</a>
-					<a href="#"class="options">Proffesseur</a>
-					<a href="#" class="options">Etudiant</a>
-					<a href="#" class="options">Acceuil</a>
+					<img src="Assets/img/logo.png" id="logo" alt="Logo ESTI">
+					
+					<?php
+						require_once ("Models/M_options.php");
+						$type = $_SESSION["idType"];
+						$ls = $options -> list_option ($type);
+
+						foreach ($ls[0] as $key => $value) {
+							# code...
+							echo "<a href='".$ls[0][$key] ."'class='options'>".$ls[1][$key]."</a>";
+						}
+					?>
 				</nav>
-		</header>
+		</header>	
 
 		<div class="nav">
 			<div id="container-user">
 				<div id="user-avatar">
-					<img src="../Assets/img/avatar.png" id="avatar" alt="-votre-avatar">
+					<img src=<?php echo ($_SESSION["profile"]);?> id="avatar" alt="-votre-avatar">
 				</div>
 				<div id="user-info">
-					<h4 id="name">Arlème Johson</h4>
-					<span id="email">arleme.dev7@gmail.com</span>
-					<h5 id="fontion">Administrateur</h5>
+					<h4 id="name"><?php echo ($_SESSION["prenom"]);?></h4>
+					<span id="email"><?php echo ($_SESSION["email"]);?></span>
+					<h5 id="fontion"><?php echo ($_SESSION["type"]);?></h5>
 				</div>
 			</div>
 			<div id="container-tool">
@@ -59,7 +65,7 @@
 
 
 				<section id="central" class="card">
-					
+					<h1>A propos de nous</h1>
 				</section>
 
 			</main> 

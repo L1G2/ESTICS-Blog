@@ -26,6 +26,12 @@
 		elseif ($action == "administrateur"){
 			administrateur();
 		}
+		elseif ($action == "publish"){
+			publier();
+		}
+		elseif ($action == "about"){
+			about();
+		}
 		elseif ($action == "ajouterEtudiant"){
 			ajouterEtudiant();
 		}
@@ -37,6 +43,12 @@
 		}
 		elseif ($action == "liste_professeur"){
 			liste_professeur();
+		}
+		elseif ($action == "liste_article"){
+			liste_article();
+		}
+		elseif ($action == "liste_message"){
+			liste_message();
 		}
 		elseif ($action == "liste_etudiant"){
 			liste_etudiant	();

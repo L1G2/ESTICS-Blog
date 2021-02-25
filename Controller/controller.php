@@ -6,6 +6,9 @@
     function home(){
         require("Views/login.php");
     }
+    function publier(){
+        require("Views/publier.php");
+    }
     function administrateur(){
         require("Views/homeAdmin.php");
     }
@@ -15,11 +18,20 @@
     function professeur(){
         require("Views/homeProfesseur.php");
     }
+    function about(){
+        require("Views/about.php");
+    }
     function liste_etudiant(){
         $user = new user();
         $etudiants = $user -> liste(1);
         require("Views/listeEtudiant.php");
-    }  
+    } 
+    function liste_message(){
+        require("Views/listeMessage.php");
+    }   
+    function liste_article(){
+        require("Views/listeArticle.php");
+    }
     function liste_professeur(){
         $user = new user();
         $professeurs = $user -> listeProfesseur();

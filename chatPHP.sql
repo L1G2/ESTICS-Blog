@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : mer. 24 fév. 2021 à 15:28
+-- Généré le : jeu. 25 fév. 2021 à 10:03
 -- Version du serveur :  8.0.23-0ubuntu0.20.04.1
 -- Version de PHP : 7.4.3
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `ESTICS`
+-- Base de données : `chatPHP`
 --
 
 -- --------------------------------------------------------
@@ -34,7 +34,7 @@ CREATE TABLE `article` (
   `objet` varchar(100) NOT NULL,
   `article` text NOT NULL,
   `date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -45,7 +45,7 @@ CREATE TABLE `article` (
 CREATE TABLE `categorie` (
   `id` int NOT NULL,
   `nom` char(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `categorie`
@@ -68,18 +68,18 @@ CREATE TABLE `cours` (
   `nom` varchar(50) NOT NULL,
   `idUser` int DEFAULT NULL,
   `idCategorie` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `cours`
 --
 
 INSERT INTO `cours` (`id`, `nom`, `idUser`, `idCategorie`) VALUES
-(1, 'INFO-253|Base de PHP Web Dynamique', 17, 1),
-(2, 'LAN-200| Français Professionnel', 5, 3),
-(3, 'Info-200| Base de données Relationnel', 6, 1),
-(4, 'INFO220 | Programmation C ++', 18, 1),
-(5, 'COM15 | Communication-LeaderShip', 19, 2);
+(1, 'INFO-253|Base de PHP Web Dynamique', NULL, 1),
+(2, 'LAN-200| Français Professionnel', NULL, 3),
+(3, 'Info-200| Base de données Relationnel', 24, 1),
+(4, 'INFO220 | Programmation C ++', NULL, 1),
+(5, 'COM15 | Communication-LeaderShip', NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -94,7 +94,7 @@ CREATE TABLE `discussion` (
   `message` text NOT NULL,
   `visibilite` tinyint NOT NULL DEFAULT '0',
   `date` datetime NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `discussion`
@@ -121,20 +121,28 @@ INSERT INTO `discussion` (`id`, `idUserEmmeteur`, `idUserRecepteur`, `message`, 
 CREATE TABLE `options` (
   `id` int NOT NULL,
   `nom` varchar(50) NOT NULL,
-  `idType` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `idType` int NOT NULL,
+  `lien` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `options`
 --
 
-INSERT INTO `options` (`id`, `nom`, `idType`) VALUES
-(1, 'message', 1),
-(2, 'message', 2),
-(3, 'message', 3),
-(4, 'notification', 1),
-(5, 'Gestion étudiant', 3),
-(6, 'Gestion  professeur', 3);
+INSERT INTO `options` (`id`, `nom`, `idType`, `lien`) VALUES
+(1, 'Accueil', 1, 'index.php?action=etudiant'),
+(2, 'Accueil', 2, 'index.php?action=professeur'),
+(3, 'Accueil', 3, 'index.php?action=administrateur'),
+(4, 'Message', 1, 'index.php?action=message'),
+(5, 'Message', 2, 'index.php?action=message'),
+(6, 'Historique', 3, 'index.php?action=liste_message'),
+(7, 'Etudiants', 3, 'index.php?action=liste_etudiant'),
+(8, 'Professeurs', 3, 'index.php?action=liste_professeur'),
+(9, 'About Us', 3, 'index.php?action=about'),
+(10, 'Article', 1, 'index.php?action=liste_article'),
+(11, 'Publier', 2, 'index.php?action=publish'),
+(12, 'About Us', 1, 'index.php?action=about'),
+(13, 'About Us', 2, 'index.php?action=about');
 
 -- --------------------------------------------------------
 
@@ -145,7 +153,7 @@ INSERT INTO `options` (`id`, `nom`, `idType`) VALUES
 CREATE TABLE `type` (
   `id` int NOT NULL,
   `nom` char(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `type`
@@ -167,29 +175,31 @@ CREATE TABLE `user` (
   `nom` char(50) NOT NULL,
   `prenom` char(50) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `mdp` varchar(250) CHARACTER SET utf8mb4 NOT NULL,
-  `profile` varchar(50) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `mdp` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `profile` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `idType` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `user`
 --
 
 INSERT INTO `user` (`id`, `nom`, `prenom`, `email`, `mdp`, `profile`, `idType`) VALUES
-(1, 'RAJAONARIVONY', 'Rivo Lalaina', 'rivo2302@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', '', 3),
-(2, 'BOTORAVONY', 'Arlème Johnson', 'rootkit7628@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', '', 2),
-(3, 'RAJAONARIVONY', 'Rivo Lalaina', 'rivo2302@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', '', 1),
-(8, 'RAJERISON', 'Fabien Julio', 'fabien53@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', '', 3),
-(9, 'RAKONTINIRINA', 'Fitiavaan', 'fitiavana@yahoo.mg', '229be39e04f960e46d8a64cadc8b4534e6bfc364', NULL, 1),
-(10, 'RAZAKASON', 'Nirina', 'nirina@gmail.com', 'f349de69da0e32888bc7eb29d3c64225a74accda', NULL, 1),
-(11, 'RAJAONARISON', 'Rochelle', 'rochelle@esti.mg', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, 2),
-(12, 'RAJAONARISON', 'Rochelle', 'rochelle@esti.mg', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, 2),
-(13, 'RAJAONARISON', 'Rochelle', 'rochelle@esti.mg', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, 2),
-(14, 'RAJAONARISON', 'Rochelle', 'rochelle@esti.mg', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', NULL, 2),
-(15, 'RAKONTINIRINA', 'Rochelle', 'rochelle@esti.mg', 'ac1ab23d6288711be64a25bf13432baf1e60b2bd', NULL, 2),
-(16, 'RAKONTINIRINA', 'Rochelle', 'rochelle@esti.mg', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', NULL, 2),
-(17, 'BOTORAVONY', 'Arleme', 'arleme.dev7@esti.mg', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', NULL, 2);
+(1, 'RAJAONARIVONY', 'Rivo Lalaina', 'rivo2302@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'pdp/default.png', 3),
+(2, 'BOTORAVONY', 'Arlème Johnson', 'rootkit7628@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'pdp/default.png', 2),
+(3, 'RAJAONARIVONY', 'Rivo Lalaina', 'rivo2302@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'pdp/default.png', 1),
+(8, 'RAJERISON', 'Fabien Julio', 'fabien53@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'pdp/default.png', 3),
+(9, 'RAKONTINIRINA', 'Philbert', 'fitiavana@yahoo.mg', '229be39e04f960e46d8a64cadc8b4534e6bfc364', 'pdp/default.png', 1),
+(10, 'RAZAKASON', 'Nirina', 'nirina@gmail.com', 'f349de69da0e32888bc7eb29d3c64225a74accda', 'pdp/default.png', 1),
+(11, 'RAJAONARISON', 'Rochelle', 'rochelle@esti.mg', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'pdp/default.png', 2),
+(12, 'RAJAONARISON', 'Rochelle', 'rochelle@esti.mg', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'pdp/default.png', 2),
+(13, 'RAJAONARISON', 'Rochelle', 'rochelle@esti.mg', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'pdp/default.png', 2),
+(14, 'RAJAONARISON', 'Rochelle', 'rochelle@esti.mg', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'pdp/default.png', 2),
+(15, 'RAKONTINIRINA', 'Rochelle', 'rochelle@esti.mg', 'ac1ab23d6288711be64a25bf13432baf1e60b2bd', 'pdp/default.png', 2),
+(16, 'RAKONTINIRINA', 'Rochelle', 'rochelle@esti.mg', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'pdp/default.png', 2),
+(22, 'RAKONTINIRINA', 'Rochelle', 'rochelle@esti.mg', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'pdp/default.png', 2),
+(24, 'RAKONTINIRINA', 'Rochelle', 'rochelle@test.ng', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'pdp/default.png', 2),
+(25, 'RAKOTONIRINA', 'Mendrika', 'mendrika@gmail.ocm', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', NULL, 1);
 
 --
 -- Index pour les tables déchargées
@@ -276,7 +286,7 @@ ALTER TABLE `discussion`
 -- AUTO_INCREMENT pour la table `options`
 --
 ALTER TABLE `options`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT pour la table `type`
@@ -288,7 +298,7 @@ ALTER TABLE `type`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
