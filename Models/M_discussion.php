@@ -12,6 +12,15 @@ class message extends CONNECT_BDD
         $query = $bdd -> prepare ("INSERT INTO discussion ( idUserEmmeteur, idUserRecepteur,  message, date) VALUES (?, ?, ?, NOW())");
         $query -> execute(array($emmeteur, $recepteur, $message));
     }
+    public function last_message( $id1, $id2){
+        $bdd = $this -> dbconnect();
+        $query = $bdd -> prepare ("SELECT  De.message , De.date FROM discussion De  WHERE De.id = (SELECT MAX(D.id) FROM discussion D INNER JOIN user U ON U.id = D.idUserEmmeteur WHERE idUserEmmeteur = ? AND idUserRecepteur = ? OR idUserEmmeteur = ? AND idUserRecepteur = ? ) LIMIT 1 ");
+        $query -> execute(array($id1, $id2, $id2, $id1)); 
+
+        $result = $query -> fetch();
+
+        return $result;
+    }
 
     /*
         Une fonction à pour récuperer les 10 dérnier messages envoyer entre deux personnes.
@@ -26,6 +35,8 @@ class message extends CONNECT_BDD
         $message = array ();    
 
         while ($data = $query -> fetch()){
+           
+
             array_push($sender, $data["sender"]);
             array_push($date, $data["date"]);
             array_push($message, $data["message"]);
@@ -54,33 +65,52 @@ class message extends CONNECT_BDD
         du discussion ou y a encore des messages non vue jusqu'au discussion ,
         on on a déja vue tout les textes .(comme messeger ;-) )
     */
-    public function check_new_message ($id){
+    public function check_new_message ($idG){
         $bdd = $this -> dbconnect();
-        $query = $bdd -> prepare (" SELECT CONCAT (U.nom ,' ',U.prenom) as sender , COUNT(*) as total , D.visibilite as vue FROM discussion D INNER JOIN user U on U.id = D.idUserEmmeteur WHERE D.visibilite = 0 AND D.idUserRecepteur = ? GROUP BY sender UNION SELECT CONCAT (U.nom ,' ',U.prenom) as sender , COUNT(*) , D.visibilite FROM discussion D INNER JOIN user U on U.id = D.idUserEmmeteur WHERE D.visibilite = 1 AND D.idUserRecepteur = ? GROUP BY sender LIMIT 16 ");
-        $query -> execute(array($id, $id)); 
-
+        $query = $bdd -> prepare ("SELECT U.id as id, CONCAT (U.nom ,' ',U.prenom) as sender , COUNT(*) as total , D.visibilite as vue FROM discussion D INNER JOIN user U on U.id = D.idUserEmmeteur WHERE D.visibilite = 0 AND D.idUserRecepteur = ? GROUP BY id ,sender UNION SELECT U.id as id, CONCAT (U.nom ,' ',U.prenom) as sender , COUNT(*) , D.visibilite FROM discussion D INNER JOIN user U on U.id = D.idUserEmmeteur WHERE D.visibilite = 1  GROUP BY id, sender LIMIT 16");
+        $query -> execute(array($idG, )); 
+        $message = array();
+        $date = array();
         $sender = array ();
+        $id = array ();
         $new_message = array();
         $visibility = array();
 
         while ($data = $query -> fetch()){
             if (!in_array($data["sender"], $sender)) {
+              
+           
+
                 array_push($sender, $data["sender"]);
                 array_push($new_message, $data["total"]);
                 array_push($visibility ,$data["vue"]);
+                array_push($id ,$data["id"]);
+
+                $last = $this -> last_message (intval($idG), intval($data["id"]));
+                array_push($date ,$last["date"]);
+                array_push($message ,$last["message"]);
             }
             else {
                 continue;
             }
         }
 
-        return [$sender, $new_message, $visibility];
+        return [$id, $sender, $date, $message,  $new_message, $visibility];
     }
+
+    /*
+        Une fonction qui fait qui met le message entre deux personne en vue
+    */
+    public function update_visibility($id1, $id2){
+        $bdd = $this -> dbconnect();
+        $query = $bdd -> prepare ("UPDATE discussion SET visibilite = 1  WHERE idUserEmmeteur = ? AND idUserRecepteur = ? ");
+        $query -> execute(array($id2, $id1));
+
+    }
+
+    
 
 }   
 
-$message = new message();
 
-$rest = $message -> check_message(2,1);
-print_r($rest);
 

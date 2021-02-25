@@ -1,6 +1,7 @@
 <?php
     require_once ("Models/M_user.php");
     require_once ("Models/M_cours.php");
+    require_once ("Models/M_discussion.php"); 
     
    
     function home(){
@@ -8,6 +9,28 @@
     }
     function publier(){
         require("Views/publier.php");
+    }
+    function formulaireMessage(){
+        require("Views/formMessage.php");
+    }
+    function msg($me, $other){
+        $message = new message ();
+        $idOther= $other;
+        $vue = $message -> update_visibility($me, $other);
+        $liste = $message -> check_message ($me ,$other);
+        require("Views/envoie.php");
+    }
+    function envoyer($mandef, $mandray, $alefa){
+        $message = new message ();
+        $send = $message -> inserer ($mandef, $mandray, $alefa);
+        header('Location: index.php?action=message&id='.$mandray);
+
+    }
+    function personnel($id){
+        $message = new message ();
+        $liste = $message -> check_new_message ($id);
+
+        require("Views/message.php");
     }
     function administrateur(){
         require("Views/homeAdmin.php");

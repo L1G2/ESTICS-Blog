@@ -63,34 +63,21 @@
 							</ul>
 				</section>
 
+
 				<section id="central" class="card">
-					<h1>Message </h1>
+					<h1>Formulaire pour envoyer un message</h1>
 
-					<button>
-						<a href="index.php?action=envoyer">Envoyer un message</a>
-					</button>
 
-					<?php
-						foreach ($liste[0] as $key => $value) {
-							# code...
-							if ($liste[5][$key]==0){
-								echo "
-									<div>
-										<h2 class = 'nonvue'><a href='index.php?action=message&id=".$liste[0][$key]."'>".$liste[1][$key]."</a>(".$liste[4][$key].")</h2>
-										<h5 class = 'nonvue'>".$liste[3][$key]."</h5> <h6>".$liste[2][$key]."</h6>
-									</div>
-								";
-							}
-							else {
-								echo "
-									<div>
-										<h2 class = 'vue'><a href='index.php?action=message&id=".$liste[0][$key]."'>".$liste[1][$key]."</a></h2>
-										<h5 class = 'vue'>".$liste[3][$key]."</h5> <h6>".$liste[2][$key]."</h6>
-									</div>
-								";								
-							}
-						}
-					?>
+					<form action="index.php?action=envoyer" method="post">
+					<div>
+						<input type='checkbox'  name='dastinataire' value='id'>
+						<label for='detinataire'>Tous</label>
+					</div>
+
+					
+
+
+					</form>
 				</section>
 
 			</main> 

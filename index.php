@@ -116,6 +116,22 @@
 				insertProfesseur($nom, $prenom, $email, $mdp,$cours);	
 			}
 		}
+		elseif ($action == "message"){
+			if (isset( $_GET["id"])){
+				msg($_SESSION["id"], $_GET["id"] );
+			}
+			else {
+				personnel($_SESSION["id"]);
+			}
+		}
+		elseif ($action == "envoyer"){
+			if (isset( $_GET["id"])&& $_POST["message"]){
+				envoyer ($_SESSION["id"], $_GET["id"] , $_POST["message"]);
+			}
+			else {
+				formulaireMessage ();
+			}
+		}
 	}   
 	else{  
 		home();
