@@ -81,7 +81,7 @@
 
 
 				<section id="central" class="card">
-				<h1>Gérer les professeurs</h1>
+				<h1>Liste des professeurs</h1>
                     <table>
                         <tr>
                             <th>Num</th>

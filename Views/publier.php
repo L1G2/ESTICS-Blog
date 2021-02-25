@@ -66,6 +66,12 @@
 
 				<section id="central" class="card">
 					<h1>Publier un article </h1>
+
+					<form action=<?php echo "index.php?action=publierArticle&id=".$_SESSION["id"]?> method="post">
+							objet =<input type="text" name="objet" id="">
+							<input type="text" name="article" id="">
+							<input type="submit" value="Publier">
+					</form>	
 				</section>
 
 			</main> 

@@ -62,8 +62,6 @@
 								<li>ENTR_261</li>
 							</ul>
 				</section>	
-
-
 				<section id="central" class="card">
 					<h1>A propos de nous</h1>
 				</section>

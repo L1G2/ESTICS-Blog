@@ -2,6 +2,7 @@
     require_once ("Models/M_user.php");
     require_once ("Models/M_cours.php");
     require_once ("Models/M_discussion.php"); 
+    require_once ("Models/M_article.php"); 
     
     //Pour afficher la page de login
     function home(){
@@ -15,6 +16,8 @@
     function formulaireMessage(){
         require("Views/formMessage.php");
     }
+
+    //Pour afficher la page discussion entre deux personne
     function msg($me, $other){
         $message = new message ();
         $idOther= $other;
@@ -27,6 +30,11 @@
         $send = $message -> inserer ($mandef, $mandray, $alefa);
         header('Location: index.php?action=message&id='.$mandray);
 
+    }
+    function publish ($id, $articles,$objet){
+        $article = new article();
+        $pub = $article -> inserer ($id, $articles, $objet);
+        header('Location: index.php?action=professeur');
     }
     function personnel($id){
         $message = new message ();
@@ -57,6 +65,8 @@
         require("Views/listeMessage.php");
     }   
     function liste_article(){
+        $article = new article ();
+        $liste = $article -> liste  ();
         require("Views/listeArticle.php");
     }
     function liste_professeur(){

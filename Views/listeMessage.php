@@ -5,6 +5,7 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="Assets/css/template.css">
 		<link rel="stylesheet" type="text/css" href="Assets/css/tableau.css">
+			
 	</head>
 
   	<body>

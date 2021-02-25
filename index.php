@@ -131,6 +131,15 @@
 				formulaireMessage ();
 			}
 		}
+		elseif ($action == "publierArticle"){
+			if (isset($_GET["id"]) && isset($_POST["article"])&& isset($_POST["objet"])){
+				$id = $_SESSION["id"];
+				$article = $_POST["article"];
+				$objet = $_POST ["objet"];
+
+				publish ($id,$article ,$objet);
+			}
+		}
 	}   
 	else{  
 		home();

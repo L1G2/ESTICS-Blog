@@ -4,6 +4,7 @@
 		<title>ESTI | Login</title>
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="Assets/css/template.css">
+		<link rel="stylesheet" type="text/css" href="Assets/css/tableau.css">
 	</head>
 
   	<body>
@@ -66,6 +67,33 @@
 
 				<section id="central" class="card">
 					<h1>Liste des articles </h1>
+
+					<table>
+                        <tr>
+                            <th>Cours</th>
+                            <th>Professeur</th>
+                            <th>Objet</th>
+                            <th>Texte</th>
+                            <th>Date</th>
+                        </tr>
+                        
+                        <?php
+                            $data = $liste;
+
+                            foreach ($data[0] as $key => $value) {
+                                echo "
+                                        <tr>
+                                            <td>". $data[1][$key] ."</td>
+                                            <td>". $data[0][$key] ."</td>
+                                            <td>". $data[2][$key] ."</td>
+                                            <td>". $data[3][$key] ."</td>       
+											<td>". $data[4][$key] ."</td>                                   
+                                        </tr>
+                                ";
+                            }
+                        ?>
+                            
+                    </table>
 				</section>
 
 			</main> 
