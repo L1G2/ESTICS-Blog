@@ -1,21 +1,21 @@
 
 /* Tableau */
-#tableau {
+table {
     border-collapse: collapse;
     width: 90%;
     margin-left: 5%;
   }
 
-#tableau td, #tableau th {
+table td, table th {
     border: 1px solid #ddd;
     padding: 10px;
 }
 
-#tableau tr:nth-child(even){background-color: #f2f2f2;}
+table tr:nth-child(even){background-color: #f2f2f2;}
 
-#tableau tr:hover {background-color: #ddd;}
+table tr:hover {background-color: #ddd;}
   
-#tableau th {
+table th {
     padding-top: 12px;
     padding-bottom: 12px;
     background-color: #5fbae9;

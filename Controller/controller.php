@@ -3,13 +3,15 @@
     require_once ("Models/M_cours.php");
     require_once ("Models/M_discussion.php"); 
     
-   
+    //Pour afficher la page de login
     function home(){
         require("Views/login.php");
     }
+    //Pour afficher la page de formulaire pour la publication d'un article
     function publier(){
         require("Views/publier.php");
     }
+    //Pour afficher la page pour envoyer un des personnes en particulier
     function formulaireMessage(){
         require("Views/formMessage.php");
     }
@@ -50,6 +52,8 @@
         require("Views/listeEtudiant.php");
     } 
     function liste_message(){
+        $message = new message ();
+        $liste = $message -> liste();
         require("Views/listeMessage.php");
     }   
     function liste_article(){

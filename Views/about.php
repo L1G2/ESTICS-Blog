@@ -61,7 +61,7 @@
 								<li>ENTR_261</li>
 								<li>ENTR_261</li>
 							</ul>
-				</section>
+				</section>	
 
 
 				<section id="central" class="card">

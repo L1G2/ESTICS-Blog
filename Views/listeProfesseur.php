@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../Assets/css/liste.css">
+	<link rel="stylesheet" type="text/css" href="Assets/css/tableau.css">
     <title>Document</title>
 </head>
 <body>
@@ -80,16 +81,16 @@
 
 
 				<section id="central" class="card">
-					<h1>Bienvenue en tant qu'étudiant </h1>
+				<h1>Gérer les professeurs</h1>
                     <table>
-                        <th>
-                            <td>Num</td>
-                            <td>Nom</td>
-                            <td>Prenom</td>
-                            <td>Email</td>
-                            <td>Cours</td>
-                            <td>Opération</td>
-                        </th>
+                        <tr>
+                            <th>Num</th>
+                            <th>Nom</th>
+                            <th>Prenom</th>
+                            <th>Email</th>
+                            <th>Cours</th>
+                            <th>Opération</th>
+                        </tr>
                         
                         <?php
                             $data = $professeurs;

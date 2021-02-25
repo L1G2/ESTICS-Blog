@@ -21,7 +21,6 @@ class message extends CONNECT_BDD
 
         return $result;
     }
-
     /*
         Une fonction à pour récuperer les 10 dérnier messages envoyer entre deux personnes.
     */
@@ -35,8 +34,6 @@ class message extends CONNECT_BDD
         $message = array ();    
 
         while ($data = $query -> fetch()){
-           
-
             array_push($sender, $data["sender"]);
             array_push($date, $data["date"]);
             array_push($message, $data["message"]);
@@ -56,10 +53,8 @@ class message extends CONNECT_BDD
         $info = $query -> fetch();
         if ($info[0] >= 1){
             return $info[0];
-        }
-        
+        }        
     }
-
     /*
             Une fonction qui retourne les dix dernier discussion d'une personne ,
         du discussion ou y a encore des messages non vue jusqu'au discussion ,
@@ -78,9 +73,6 @@ class message extends CONNECT_BDD
 
         while ($data = $query -> fetch()){
             if (!in_array($data["sender"], $sender)) {
-              
-           
-
                 array_push($sender, $data["sender"]);
                 array_push($new_message, $data["total"]);
                 array_push($visibility ,$data["vue"]);
@@ -94,7 +86,6 @@ class message extends CONNECT_BDD
                 continue;
             }
         }
-
         return [$id, $sender, $date, $message,  $new_message, $visibility];
     }
 
@@ -105,11 +96,25 @@ class message extends CONNECT_BDD
         $bdd = $this -> dbconnect();
         $query = $bdd -> prepare ("UPDATE discussion SET visibilite = 1  WHERE idUserEmmeteur = ? AND idUserRecepteur = ? ");
         $query -> execute(array($id2, $id1));
-
     }
 
-    
+    public function   liste (){
+        $bdd = $this -> dbconnect();
+        $query = $bdd -> prepare ("SELECT concat(U.nom,' ',U.prenom ) AS sender ,concat(Ud.nom,' ',Ud.prenom ) AS recepteur,D.message , D.date FROM discussion D INNER JOIN user U ON U.id = D.idUserEmmeteur INNER JOIN user Ud ON Ud.id = D.idUserRecepteur ORDER BY date LIMIT 12 ");
+        $query -> execute();       
+        $sender = array ();
+        $recepteur = array();
+        $date = array();
+        $message = array ();    
+        while ($data = $query -> fetch()){
+            array_push($sender, $data["sender"]);
+            array_push($recepteur, $data["sender"]);
+            array_push($date, $data["date"]);
+            array_push($message, $data["message"]);
+        }
 
+        return [$sender,$recepteur, $message, $date];      
+    }  
 }   
 
 

@@ -21,6 +21,7 @@
 		<title>ESTI | Login</title>
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="Assets/css/template.css">
+		<link rel="stylesheet" type="text/css" href="Assets/css/tableau.css">
 	</head>
 
   	<body>
@@ -82,14 +83,15 @@
 
 
 				<section id="central" class="card">
+					<h1> Gérer les étudiants</h1>
                     <table>
-                        <th>
-                            <td>Num</td>
-                            <td>Nom</td>
-                            <td>Prenom</td>
-                            <td>Email</td>
-                            <td>Opération</td>
-                        </th>
+                        <tr>
+                            <th>Num</th>
+                            <th>Nom</th>
+                            <th>Prenom</th>
+                            <th>Email</th>
+                            <th>Opération</th>
+                        </tr>
                         
                         <?php
                             $data = $etudiants;

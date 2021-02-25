@@ -105,7 +105,6 @@
 				insertEtudiant($nom, $prenom, $email, $mdp);	
 			}
 		}	
-
 		elseif ($action == "insererProfesseur"){
 			if (isset( $_POST["nom"])&& isset( $_POST["prenom"])&& isset( $_POST["email"])&& isset( $_POST["mdp"])){
 				$nom =  $_POST["nom"];
