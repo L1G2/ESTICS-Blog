@@ -84,6 +84,7 @@
 				<h1>Liste des professeurs</h1>
                     <table>
                         <tr>
+							<th>Image</th>
                             <th>Num</th>
                             <th>Nom</th>
                             <th>Prenom</th>
@@ -98,6 +99,7 @@
                             foreach ($data[0] as $key => $value) {
                                 echo "
                                         <tr>
+											<td><img src='Assets/img/pdp/".$data[5][$key] ."' alt='une_image' class='profileimage'></td>
                                             <td>". $data[0][$key] ."</td>
                                             <td>". $data[1][$key] ."</td>
                                             <td>". $data[2][$key] ."</td>

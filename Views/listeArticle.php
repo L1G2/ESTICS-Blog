@@ -70,11 +70,15 @@
 
 					<table>
                         <tr>
+							<th>Lien image</th>
                             <th>Cours</th>
                             <th>Professeur</th>
                             <th>Objet</th>
                             <th>Texte</th>
                             <th>Date</th>
+
+							
+							
                         </tr>
                         
                         <?php
@@ -83,11 +87,13 @@
                             foreach ($data[0] as $key => $value) {
                                 echo "
                                         <tr>
+											<td><img src='Assets/img/article/".$data[5][$key] ."' alt='une_image' class='articleimage'></td>  
                                             <td>". $data[1][$key] ."</td>
                                             <td>". $data[0][$key] ."</td>
                                             <td>". $data[2][$key] ."</td>
                                             <td>". $data[3][$key] ."</td>       
-											<td>". $data[4][$key] ."</td>                                   
+											<td>". $data[4][$key] ."</td>    
+											                               
                                         </tr>
                                 ";
                             }

@@ -34,33 +34,36 @@ class user extends CONNECT_BDD
    */
     public function liste ($type) {
         $bdd = $this -> dbConnect();
-        $query = $bdd -> prepare ("SELECT U.id, U.nom ,prenom ,email   FROM user U INNER JOIN type T ON T.id = U.idType WHERE T.id  = ?");
+        $query = $bdd -> prepare ("SELECT U.id, U.nom ,prenom ,email,profile   FROM user U INNER JOIN type T ON T.id = U.idType WHERE T.id  = ?");
         $query -> execute (array ($type,));
         $numero = array();
         $nom = array ();
         $email = array ();
         $prenom = array ();
+        $profile = array();
 
         while ( $data = $query -> fetch()){
             array_push($numero, $data["id"]);
             array_push($nom, $data["nom"]);
             array_push($prenom, $data["prenom"]);
             array_push($email, $data["email"]);
+            array_push($profile, $data["profile"]);
         }
-        return [$numero, $nom, $prenom, $email];
+        return [$numero, $nom, $prenom, $email,$profile];
    }
    /*
         Une fonction qui va récuperer la liste des professeurs ainsi que les cours qu'ils occuppent
    */
     public function listeProfesseur () {
         $bdd = $this -> dbConnect();
-        $query = $bdd -> prepare ("SELECT U.id, U.nom ,prenom ,email, C.nom AS cours   FROM user U INNER JOIN cours  C ON C.idUser = U.id INNER JOIN type T ON T.id = U.idType WHERE T.id  = 2");
+        $query = $bdd -> prepare ("SELECT U.id, U.nom ,prenom ,email, U.profile, C.nom AS cours   FROM user U INNER JOIN cours  C ON C.idUser = U.id INNER JOIN type T ON T.id = U.idType WHERE T.id  = 2");
         $query -> execute (array ($type,));
         $numero = array();
         $nom = array ();
         $email = array ();
         $prenom = array ();
         $cours= array ();
+        $profile = array();
 
         while ( $data = $query -> fetch()){
             array_push($numero, $data["id"]);
