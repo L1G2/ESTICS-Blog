@@ -22,7 +22,7 @@
 							# code...
 							echo "<a href='".$ls[0][$key] ."'class='options'>".$ls[1][$key]."</a>";
 						}
-					?>
+						?>
 				</nav>
 		</header>	
 
