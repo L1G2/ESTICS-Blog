@@ -255,12 +255,9 @@
 			$user = new user ();
 			$user -> updateProfile ($_SESSION["id"],$chemin);
 			$_SESSION["profile"]= "Assets/img/pdp/".$chemin;
-		  } else {
-			echo "Sorry, there was an error uploading your file.";
 		  }
 		}
 		header('Location: index.php?action=etudiant');
-		
 	}  
 	else{  
 		home();

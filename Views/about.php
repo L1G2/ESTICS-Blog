@@ -37,7 +37,7 @@
 				</div>
 			</div>
 			<div id="container-tool">
-				<button id="logout-btn"><a href="index.php?action=deconnecter">Deconection</a></button>
+				<button id="logout-btn"><a href="index.php?action=deconnecter">Deconnexion</a></button>
 			</div>
 		</div>
 

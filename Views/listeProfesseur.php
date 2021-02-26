@@ -52,7 +52,7 @@
 				</div>
 			</div>
 			<div id="container-tool">
-				<button id="logout-btn"><a href="index.php?action=deconnecter">Deconection</a></button>
+				<button id="logout-btn"><a href="index.php?action=deconnecter">Deconnexion</a></button>
 			</div>
 		</div>
 
@@ -105,15 +105,14 @@
                                             <td>". $data[2][$key] ."</td>
                                             <td>". $data[3][$key] ."</td>
                                             <td>". $data[4][$key] ."</td>
-                                            <td> <a href='?action=modifier&type=professeur&id=" .$data[0][$key]."'>Modifier</a> <a href='?action=supprimer&type=professeur&id=" .$data[0][$key]. "'>Supprimer</a></td>
-                                        
+                                            <td style='width:90px !important; '> <button class='edit'><a href='?action=modifier&type=professeur&id=" .$data[0][$key]."'>Modifier</a></button><button class='suppr'><a href='?action=supprimer&type=professeur&id=" .$data[0][$key]. "'>Supprimer</a></button></td>
                                         </tr>
                                 ";
                             }
                         ?>
                             
                     </table>
-                    <a href="?action=ajouterProfesseur&type=2">Ajouter</a>
+                    <button id="add"><span>+</span><a href="?action=ajouterProfesseur&type=2"> Ajouter</a></button>
 				</section>
 
 			</main> 

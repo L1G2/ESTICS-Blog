@@ -108,10 +108,10 @@ class message extends CONNECT_BDD
         $message = array ();    
         while ($data = $query -> fetch()){
             array_push($sender, $data["sender"]);
-            array_push($recepteur, $data["sender"]);
+            array_push($recepteur, $data["recepteur"]);
             array_push($date, $data["date"]);
             array_push($message, $data["message"]);
-        }
+        } 
 
         return [$sender,$recepteur, $message, $date];      
     }  

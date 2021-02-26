@@ -7,13 +7,15 @@ table {
   }
 
 table td, table th {
-    border: 1px solid #ddd;
+    border: 1px solid rgb(209, 205, 205);
     padding: 10px;
 }
 
 table tr:nth-child(even){background-color: #f2f2f2;}
 
-table tr:hover {background-color: #ddd;}
+table tr:hover {
+    background-color: #ddd;
+}
   
 table th {
     padding-top: 12px;
@@ -21,7 +23,50 @@ table th {
     background-color: #5fbae9;
     color: white;
 }
-  
+
+.profileimage{
+    width: 50px; /* width of container */
+    height: 50px; /* height of container */
+    overflow: hidden;
+}
+.profileimage img {
+    width: 50px;
+    height:50px;
+}
+button{
+    padding: 5px;
+    margin-left: 5px;
+    margin-top: 5px;
+    border: 0 solid white;
+    border-radius: 5px;
+    text-decoration: none;
+}
+button a{
+    text-decoration: none;
+    color: white;
+}
+
+.edit{
+    background-color: rgba(230, 47, 47, 0.904);
+}
+.suppr{
+    background-color: rgba(30, 167, 209, 0.904);
+}
+#add{
+    margin-top: 5%;
+    margin-right: 5%;
+    font-size: large;
+    float: right;
+    background-color: rgba(7, 124, 13, 0.904);
+}
+#add span{
+    background-color: white;
+    border-radius: 50px;
+    padding-left: 4px;
+    padding-right: 4px;
+    color: rgba(7, 124, 13, 0.904);
+}
+
 *:focus {
     outline: none;
 } 
