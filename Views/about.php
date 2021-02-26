@@ -4,6 +4,7 @@
 		<title>ESTI | Login</title>
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="Assets/css/template.css">
+		<link rel="stylesheet" type="text/css" href="Assets/css/about.css">
 	</head>
 
   	<body>
@@ -63,9 +64,47 @@
 							</ul>
 				</section>	
 				<section id="central" class="card">
-					<h1>A propos de nous</h1>
+					<table class='table-card'>
+                        <tr>
+                            <h2>Nous concernant<h2>
+                        </tr>
+                        <tr>
+                            <p>Nous sommes des élèves en L1 à l'ESTI accompagnés par le 
+                            programme SESAME aspirant à devenir de grand développeur
+                            portant l'honneur de notre famille, notre école et notre patrie.
+                            <p>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="card-us">
+                                    <img class="card-img" src="Assets/img/us/arleme.png" alt="Avatar">
+                                    <div class="container">
+                                        <h4><b>Arlème Johnson</b></h4> 
+                                        <p>Developpeur FullStack</p> 
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="card-us">
+                                    <img class="card-img" src="Assets/img/us/zo.png" alt="Avatar">
+                                    <div class="container">
+                                        <h4><b>Zo Tsihoarana</b></h4> 
+                                        <p>Administrateur Base De Donnée</p> 
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="card-us">
+                                    <img class="card-img" src="Assets/img/us/rivo.png" alt="Avatar">
+                                    <div class="container">
+                                        <h4><b>Rivo Lalaina</b></h4> 
+                                        <p>Developpeur BackEnd</p> 
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
 				</section>
-
 			</main> 
 	</body>
 

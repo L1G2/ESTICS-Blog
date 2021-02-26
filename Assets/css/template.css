@@ -10,16 +10,16 @@ body {
 	color: #eee;
 	font-family: 'Lato', sans-serif;
 	font-size: 62.5%;
-	padding: 0 20px;
 }
 
 /* Appearance */
 #header {
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
-  width: 100%;
 	right: 0;
+    width: 100%;
+    z-index: 10;
 }
 
 .menu {
@@ -51,13 +51,6 @@ body {
   width:80px;
 }
 
-*:focus {
-    outline: none;
-} 
-
-* {
-  box-sizing: border-box;
-}
 .nav {
     display: inline-block;
     background-color: #ffff;
@@ -101,8 +94,8 @@ main{
   position: absolute;
   margin-top:20%;
   color: black;
-  width: 100%;
-  padding : 0.8%;
+  width: 98%;
+  padding-left:2%;
 }
 .card{
   text-align: center;
@@ -111,7 +104,7 @@ main{
   background: #fff;
   box-shadow: 0 20px 30px 0 rgba(0,0,0,0.3);
   padding-bottom: 2%;
-  min-height: 500px;
+  min-height: 520px;
 }
 
 #panel{
@@ -129,8 +122,18 @@ section>h4{
   margin-right: 3.5%;
   float:right;
   width: 75%;
+  padding : 2%;
 }
+
 section>ul{
   list-style: none;
   display: inline-block;
+}
+
+*:focus {
+    outline: none;
+} 
+
+* {
+  box-sizing: border-box;
 }
