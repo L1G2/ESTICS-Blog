@@ -91,7 +91,7 @@
 
                                 </select> 
                                 <br>
-                        mot de passe= <input type="text" name="mdp" id=""> <br>
+                        mot de passe= <input type="password" name="mdp" id=""> <br>
 
                         <input type="submit" value="Envoyer">
                     </form>
