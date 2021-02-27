@@ -3,13 +3,13 @@
 	<head lang="fr">
 		<title>ESTI | Login</title>
 		<meta charset="utf-8">
-		<link rel="stylesheet" type="text/css" href="Assets/css/template.css">
+		<link rel="stylesheet" type="text/css" href="../Assets/css/template.css">
 	</head>
 
   	<body>
 		<header id="header">
 				<nav class="menu">
-					<img src="Assets/img/logo.png" id="logo" alt="Logo ESTI">
+					<img src="../Assets/img/logo.png" id="logo" alt="Logo ESTI">
 					
 					<?php
 						require_once ("Models/M_options.php");
@@ -40,15 +40,15 @@
 				</div>
 			</div>
 			<div id="container-tool">
-				<button id="logout-btn"><a href="index.php?action=deconnecter">Deconection</a></button>
-			</div>
-			<div class = "notif">
-				<?php
-					require_once("Models/M_discussion.php");
-					$mess = new message();
-					$test = $mess -> check_nb_message ($_SESSION["id"]);
-					echo ($test);	
-				?>
+                <button id = "notif"><a href='#'><span>
+                    <?php
+                        require_once("Models/M_discussion.php");
+                        $mess = new message();
+                        $test = $mess -> check_nb_message ($_SESSION["id"]);
+                        echo ($test);	
+                    ?></span> Messages </a>
+                </button>
+				<button id="logout-btn"><a href="index.php?action=deconnecter">Deconnexion</a></button>
 			</div>
 		</div>
 
