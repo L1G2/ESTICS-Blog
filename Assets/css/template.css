@@ -2,7 +2,6 @@
   font-family: 'Poppins';
   src: url('../fonts/Poppins.ttf') format('truetype');
 }
-
 html {
   background-color: #009FE3;
 }
@@ -12,7 +11,7 @@ body {
 	font-size: 62.5%;
 }
 
-/* Appearance */
+/* En tête */
 #header {
 	position: fixed;
 	top: 0;
@@ -21,7 +20,7 @@ body {
     width: 100%;
     z-index: 10;
 }
-
+/* Menu de navigation */
 .menu {
 	background-color: #ffff;
 	border-bottom: 1px solid #0003;
@@ -50,7 +49,7 @@ body {
   float: left;
   width:80px;
 }
-
+/* Bar : Information sur la personne  */
 .nav {
     display: inline-block;
     background-color: #ffff;
@@ -67,7 +66,6 @@ body {
     right: 0;
     text-align: center;
 }
-
 
 /*Avatar et Les info sur l'utilisateur*/
 #avatar {
@@ -89,6 +87,7 @@ body {
   height: 30%;
 }
 
+/* Page principale */
 main{
   font-size: medium;
   position: absolute;
@@ -108,14 +107,25 @@ main{
 }
 
 #panel{
-  float:left;	
+  float:left;
   width: 20%;
 }
 
-section>h4{
+#panel h4{
   text-align: center;
   color: #0d0d0d;
   border-bottom: 2px solid #5fbae9;
+}
+
+#panel h5{
+  text-align: left;
+  color: #0d0d0d;
+  margin-left:15%;
+}
+
+#panel ul{
+ text-align: left;
+ margin-left:15%;
 }
 
 #central{
@@ -125,10 +135,34 @@ section>h4{
   padding : 2%;
 }
 
-section>ul{
-  list-style: none;
-  display: inline-block;
+
+
+
+/*Acceuil et privileges*/
+.privileges{
+    box-shadow: 0 8px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 80%;
+    padding: 5% ;
+    margin-top: 5%;
+    line-height: 2em;
+    margin-left: auto;
+    margin-right: auto;
 }
+
+.privileges h1{
+    text-align: center;
+    padding: 2%;
+}
+
+#citation{
+    padding-top: 1%;
+    text-align:center;
+    text-style:italic;
+    font-size:small;
+    color: rgba(0,0,0,0.7);
+}
+
 
 *:focus {
     outline: none;

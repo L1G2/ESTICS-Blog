@@ -71,11 +71,20 @@
 							</ul>
 				</section>
 
-
-				<section id="central" class="card">
-					<h1>Bienvenue en tant qu'étudiant </h1>
+                <section id="central" class="card">
+                    <div class = "privileges" style='text-align:left'>
+                        <h1>Bienvenue en tant que Etudiant <?php echo ($_SESSION["prenom"]);?></h1>
+                        <h3> Sur cette plateforme, vous pouvez : </h3>
+                            <ul>
+                                <li>Envoyer des messages à vos amis</li> 
+                                <li>Recevoir des messages de vos profésseur</li>
+                                <li>Voir les articles publier par vos professeur</li> 
+                            </ul>
+                        <div id='citation'>
+                            <quotes> "Programmez pour être libre, et libérez de la programmation." </quotes>
+                        </div>
+                    </div>
 				</section>
-
 			</main> 
 	</body>
 

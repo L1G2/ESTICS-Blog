@@ -65,7 +65,22 @@
 
 
 				<section id="central" class="card">
+				
+                <div class = "privilèges">
 					<h1>Bienvenue en tant qu'Administrateur </h1>
+					
+                    <h2> Vos privilèges dans ce site sont: </h2>
+                    <h3>***Gérer les étudiants , ajouter ,modiifier  et même y supprimer .</h3> 
+                    <h3>***Gérer les professeurs  , ajouter ,modiifier  et même y supprimer .</h3> 
+                    <h3>***Gérer les professeurs  , ajouter ,modiifier  et même y supprimer .</h3> 
+                    <h3>***Voir l'historique dess messages que les utilisateurs se sont envoyés .</h3> 
+                    <h3>***Gérer les professeurs  , ajouter ,modiifier  et même y supprimer .</h3> 
+                    
+                    
+                    <h2> "Programmez pour être libre, et libérez de la programmation." </h2>
+                </div>
+                    
+                    
 				</section>
 
 			</main> 
