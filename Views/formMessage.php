@@ -68,15 +68,20 @@
 					<h1>Formulaire pour envoyer un message</h1>
 
 
-					<form action="index.php?action=envoyer" method="post">
-					<div>
-						<input type='checkbox'  name='dastinataire' value='id'>
-						<label for='detinataire'>Tous</label>
-					</div>
-
+					<form action="index.php?action=mety" method="post">
 					
+						<select class="select" name = "dest">
+							<?php
 
+								foreach ($liste[0] as $key => $value) {
+								echo "<option value=" .$liste[0][$key] . ">" . $liste[1][$key]. "</option>";
+								}
+							?>
 
+						</select>
+						<input type="text" name="message" id="">
+						<input type="submit" value="Envoyer">
+					
 					</form>
 				</section>
 

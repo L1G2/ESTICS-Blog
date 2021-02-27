@@ -32,6 +32,10 @@
 		elseif ($action == "about"){
 			about();
 		}
+		elseif ($action == "send"){
+			$id = $_POST[" "];
+			$message = $_POST[" "];
+		}
 		elseif ($action == "ajouterEtudiant"){
 			ajouterEtudiant();
 		}
@@ -56,6 +60,19 @@
 		elseif ($action == "deconnecter"){
 			session_destroy();
 			home();
+
+		}
+		elseif ($action == "mety"){
+
+			if (isset($_POST["message"])&&isset($_POST["dest"])){
+				echo "rivo";
+				$message = $_POST["message"];
+				$id = $_POST["dest"];
+
+				
+				
+				envoyer ($_SESSION["id"],$id, $message);
+			}
 
 		}
 		elseif ($action == "modifier"){

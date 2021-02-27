@@ -141,7 +141,24 @@ class user extends CONNECT_BDD
             return $info[0];
         }        
    }
+   public function available() {
+    $bdd = $this -> dbConnect();
+    $query = $bdd -> prepare ("SELECT U.id, concat(U.nom ,prenom) as personne  FROM user U INNER JOIN type T ON T.id = U.idType WHERE T.id  = 1 or T.id = 2");
+    $query -> execute ();
+    $id = array();
+    $personne = array ();
+
+
+    $profile = array();
+
+    while ( $data = $query -> fetch()){
+        array_push($id, $data["id"]);
+        array_push($personne, $data["personne"]);
+    }
+    return [$id, $personne];
+}
 
 }
+
 
 

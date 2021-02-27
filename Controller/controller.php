@@ -14,6 +14,8 @@
     }
     //Pour afficher la page pour envoyer un des personnes en particulier
     function formulaireMessage(){
+        $user = new user();
+        $liste = $user -> available();
         require("Views/formMessage.php");
     }
 
@@ -27,8 +29,14 @@
     }
     function envoyer($mandef, $mandray, $alefa){
         $message = new message ();
-        $send = $message -> inserer ($mandef, $mandray, $alefa);
-        header('Location: index.php?action=message&id='.$mandray);
+        if ($mandef == $mandray ){
+            header('Location: index.php?action=message&id='.$mandray);   
+        }
+        else {
+            $send = $message -> inserer ($mandef, $mandray, $alefa);
+            header('Location: index.php?action=message&id='.$mandray);
+    
+        }
 
     }
     function publish ($id, $articles,$objet,$image){
