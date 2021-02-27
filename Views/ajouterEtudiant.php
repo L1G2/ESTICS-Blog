@@ -72,10 +72,10 @@
 				<section id="central" class="card">
                         <h1>Formulare d'ajout Etudiant </h1>
                         <form action="?action=insererEtudiant" method="post">
-                            Nom = <input type="text" name="nom" id=""> <br>
-                            Prenom= <input type="text" name="prenom" id=""> <br>
-                            email = <input type="text" name="email" id=""> <br>
-                            mot de passe= <input type="text" name="mdp" id=""> <br>
+                            Nom = <input type="text" name="nom"  id=""> 
+                            Prenom= <input type="text" name="prenom" id=""> 
+                            email = <input type="text" name="email" id="" > 
+                            mot de passe= <input type="password" name="mdp" id=""> 
 
                             <input type="submit" value="Envoyer">
                         </form>

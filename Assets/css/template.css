@@ -221,9 +221,15 @@ main{
 
 
 
-input[type=text] {
+input[type=text],  input[type=password]{
   background-color:  #009FE3;
   color: white;
+  padding: 5px;
+  margin-top: 5px;  
+  margin-bottom: 5px;
+  margin-left: 5px;
+  border: 0 solid white;
+  border-radius: 5px;
 }
 
 
@@ -231,4 +237,8 @@ input[type=submit] {
   background-color:  #0cc433;
   color: white;
   margin-top: 20px;
+  padding: 5px;
+  margin-left: 5px;
+  border: 0 solid white;
+  border-radius: 5px;
 }
