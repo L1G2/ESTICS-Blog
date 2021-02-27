@@ -68,24 +68,20 @@
 							</ul>
 				</section>
 
-
-				<section id="central" class="card">
-				
-                <div class = "privilèges">
-					<h1>Bienvenue en tant qu'Administrateur </h1>
-					
-                    <h2> Vos privilèges dans ce site sont: </h2>
-                    <h3>***Gérer les étudiants , ajouter ,modiifier  et même y supprimer .</h3> 
-                    <h3>***Gérer les professeurs  , ajouter ,modiifier  et même y supprimer .</h3> 
-                    <h3>***Gérer les professeurs  , ajouter ,modiifier  et même y supprimer .</h3> 
-                    <h3>***Voir l'historique dess messages que les utilisateurs se sont envoyés .</h3> 
-                    <h3>***Gérer les professeurs  , ajouter ,modiifier  et même y supprimer .</h3> 
-                    
-                    
-                    <h2> "Programmez pour être libre, et libérez de la programmation." </h2>
-                </div>
-                    
-                    
+                <section id="central" class="card">
+                    <div class = "privileges" style='text-align:left'>
+                        <h1>Bienvenue en tant qu'Administrateur <?php echo ($_SESSION["prenom"]);?></h1>
+                        <h3> Sur cette plateforme, vous pouvez : </h3>
+                            <ul>
+                                <li>Gérer la liste des étudiants et des professeurs.</li> 
+                                <li>Modifier les informations concernant un étudiant ou un proffesseur</li> 
+                                <li>Supprimer complètement une personne de la liste</li> 
+                                <li>Suivre l'historique des messages des utilisateurs</li> 
+                            </ul>
+                        <div id='citation'>
+                            <quotes> "Programmez pour être libre, et libérez de la programmation." </quotes>
+                        </div>
+                    </div>
 				</section>
 
 			</main> 
