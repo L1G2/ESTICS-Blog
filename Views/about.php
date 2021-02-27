@@ -41,15 +41,15 @@
 				</div>
 			</div>
 			<div id="container-tool">
+                <button id = "notif"><a href='index.php?action=message'><span>
+                    <?php
+                        require_once("Models/M_discussion.php");
+                        $mess = new message();
+                        $test = $mess -> check_nb_message ($_SESSION["id"]);
+                        echo ($test);	
+                    ?></span> Messages </a>
+                </button>
 				<button id="logout-btn"><a href="index.php?action=deconnecter">Deconnexion</a></button>
-			</div>
-			<div class = "notif">
-				<?php
-					require_once("Models/M_discussion.php");
-					$mess = new message();
-					$test = $mess -> check_nb_message ($_SESSION["id"]);
-					echo ($test);	
-				?>
 			</div>
 		</div>
 
@@ -92,7 +92,7 @@
                                     <img class="card-img" src="Assets/img/us/arleme.png" alt="Avatar">
                                     <div class="container">
                                         <h4><b>Arlème Johnson</b></h4> 
-                                        <p>Developpeur FullStack</p> 
+                                        <p>Developpeur FrontEnd	</p> 
                                     </div>
                                 </div>
                             </td>
@@ -116,6 +116,10 @@
                             </td>
                         </tr>
                     </table>
+
+					<div id='citation'>
+                            <quotes> "Programmez pour être libre, et libérez de la programmation." </quotes>
+					</div>
 				</section>
 			</main> 
 	</body>

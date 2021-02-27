@@ -218,3 +218,17 @@ main{
 * {
   box-sizing: border-box;
 }
+
+
+
+input[type=text] {
+  background-color:  #009FE3;
+  color: white;
+}
+
+
+input[type=submit] {
+  background-color:  #0cc433;
+  color: white;
+  margin-top: 20px;
+}
