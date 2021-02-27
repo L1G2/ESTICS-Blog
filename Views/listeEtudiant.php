@@ -51,10 +51,15 @@
 					<h4 id="name"><?php echo ($_SESSION["prenom"]);?></h4>
 					<span id="email"><?php echo ($_SESSION["email"]);?></span>
 					<h5 id="fontion"><?php echo ($_SESSION["type"]);?></h5>
+
+					<form action="index.php" method="post" enctype="multipart/form-data">>
+						<input type="file" name="fileToUpload" id="fileToUpload">
+						<input type="submit" value="VALIDER" name="submit">
+					</form>
 				</div>
 			</div>
 			<div id="container-tool">
-				<button id="logout-btn"><a href="index.php?action=deconnecter">Deconection</a></button>
+				<button id="logout-btn"><a href="index.php?action=deconnecter">Deconnexion</a></button>
 			</div>
 		</div>
 
@@ -86,6 +91,7 @@
 					<h1> Gérer les étudiants</h1>
                     <table>
                         <tr>
+							<th>Image</th>
                             <th>Num</th>
                             <th>Nom</th>
                             <th>Prenom</th>
@@ -99,19 +105,19 @@
                             foreach ($data[0] as $key => $value) {
                                 echo "
                                         <tr>
+											<td class='profileimage'><img src='Assets/img/pdp/".$data[4][$key] ."' alt='une_image'></td>
                                             <td>". $data[0][$key] ."</td>
                                             <td>". $data[1][$key] ."</td>
                                             <td>". $data[2][$key] ."</td>
                                             <td>". $data[3][$key] ."</td>
-                                            <td> <a href='?action=modifier&type=etudiant&id=" .$data[0][$key]. "'>Modifier</a> <a href='?action=supprimer&type=etudiant&id=" .$data[0][$key]. "'>Supprimer</a></td>
-                                        
+                                            <td><button class='suppr'><a href='?action=modifier&type=etudiant&id=" .$data[0][$key]. "'>Modifier</a></button><button class='edit'><a href='?action=supprimer&type=etudiant&id=" .$data[0][$key]. "'>Supprimer</a></button></td>
                                         </tr>
                                 ";
                             }
                         ?>
                             
                     </table>
-                    <a href="?action=ajouterEtudiant&type=1">Ajouter</a>
+                    <button id='add'><a href="?action=ajouterEtudiant&type=1"><span>+</span> Ajouter</a></button>
 				</section>
 
 			</main> 

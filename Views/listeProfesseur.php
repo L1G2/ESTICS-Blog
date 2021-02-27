@@ -49,10 +49,15 @@
 					<h4 id="name"><?php echo ($_SESSION["prenom"]);?></h4>
 					<span id="email"><?php echo ($_SESSION["email"]);?></span>
 					<h5 id="fontion"><?php echo ($_SESSION["type"]);?></h5>
+
+					<form action="index.php" method="post" enctype="multipart/form-data">>
+						<input type="file" name="fileToUpload" id="fileToUpload">
+						<input type="submit" value="VALIDER" name="submit">
+					</form>
 				</div>
 			</div>
 			<div id="container-tool">
-				<button id="logout-btn"><a href="index.php?action=deconnecter">Deconection</a></button>
+				<button id="logout-btn"><a href="index.php?action=deconnecter">Deconnexion</a></button>
 			</div>
 		</div>
 
@@ -84,6 +89,7 @@
 				<h1>Liste des professeurs</h1>
                     <table>
                         <tr>
+							<th>Image</th>
                             <th>Num</th>
                             <th>Nom</th>
                             <th>Prenom</th>
@@ -98,20 +104,20 @@
                             foreach ($data[0] as $key => $value) {
                                 echo "
                                         <tr>
+											<td><img src='Assets/img/pdp/".$data[5][$key] ."' alt='une_image' class='profileimage'></td>
                                             <td>". $data[0][$key] ."</td>
                                             <td>". $data[1][$key] ."</td>
                                             <td>". $data[2][$key] ."</td>
                                             <td>". $data[3][$key] ."</td>
                                             <td>". $data[4][$key] ."</td>
-                                            <td> <a href='?action=modifier&type=professeur&id=" .$data[0][$key]."'>Modifier</a> <a href='?action=supprimer&type=professeur&id=" .$data[0][$key]. "'>Supprimer</a></td>
-                                        
+                                            <td style='width:90px !important; '> <button class='edit'><a href='?action=modifier&type=professeur&id=" .$data[0][$key]."'>Modifier</a></button><button class='suppr'><a href='?action=supprimer&type=professeur&id=" .$data[0][$key]. "'>Supprimer</a></button></td>
                                         </tr>
                                 ";
                             }
                         ?>
                             
                     </table>
-                    <a href="?action=ajouterProfesseur&type=2">Ajouter</a>
+                    <button id="add"><span>+</span><a href="?action=ajouterProfesseur&type=2"> Ajouter</a></button>
 				</section>
 
 			</main> 

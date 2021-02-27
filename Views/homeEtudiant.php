@@ -33,18 +33,22 @@
 					<h4 id="name"><?php echo ($_SESSION["prenom"]);?></h4>
 					<span id="email"><?php echo ($_SESSION["email"]);?></span>
 					<h5 id="fontion"><?php echo ($_SESSION["type"]);?></h5>
-
-
-
+					<form action="index.php" method="post" enctype="multipart/form-data">>
+						<input type="file" name="fileToUpload" id="fileToUpload">
+						<input type="submit" value="VALIDER" name="submit">
+					</form>
 				</div>
 			</div>
 			<div id="container-tool">
 				<button id="logout-btn"><a href="index.php?action=deconnecter">Deconection</a></button>
-				<form action="index.php" method="post" enctype="multipart/form-data">
-					Select image to upload:
-					<input type="file" name="fileToUpload" id="fileToUpload">
-					<input type="submit" value="Upload Image" name="submit">
-				</form>
+			</div>
+			<div class = "notif">
+				<?php
+					require_once("Models/M_discussion.php");
+					$mess = new message();
+					$test = $mess -> check_nb_message ($_SESSION["id"]);
+					echo ($test);	
+				?>
 			</div>
 		</div>
 

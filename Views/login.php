@@ -17,7 +17,7 @@
 
         <!-- Login Form -->
         <form method="POST" action="index.php?action=login">
-          <input type="email" id="login" name="email" placeholder="Email ESTI" autocomplete="off">
+          <input type="email" id="login" name="email" placeholder="Email ESTI">
           <input type="password" id="password" name="mdp" placeholder="Mot de passe">
           <input type="submit" value="connexion">
 

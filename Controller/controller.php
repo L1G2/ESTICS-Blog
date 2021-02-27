@@ -14,6 +14,8 @@
     }
     //Pour afficher la page pour envoyer un des personnes en particulier
     function formulaireMessage(){
+        $user = new user();
+        $liste = $user -> available();
         require("Views/formMessage.php");
     }
 
@@ -27,13 +29,19 @@
     }
     function envoyer($mandef, $mandray, $alefa){
         $message = new message ();
-        $send = $message -> inserer ($mandef, $mandray, $alefa);
-        header('Location: index.php?action=message&id='.$mandray);
+        if ($mandef == $mandray ){
+            header('Location: index.php?action=message&id='.$mandray);   
+        }
+        else {
+            $send = $message -> inserer ($mandef, $mandray, $alefa);
+            header('Location: index.php?action=message&id='.$mandray);
+    
+        }
 
     }
-    function publish ($id, $articles,$objet){
+    function publish ($id, $articles,$objet,$image){
         $article = new article();
-        $pub = $article -> inserer ($id, $articles, $objet);
+        $pub = $article -> inserer ($id, $articles, $objet,$image);
         header('Location: index.php?action=professeur');
     }
     function personnel($id){
@@ -122,7 +130,7 @@
             $_SESSION ["type"] = $login[3];
             $_SESSION ["idType"] = $login[4];
             $_SESSION ["email"] = $login[5];
-            $_SESSION ["profile"] = $login[6];
+            $_SESSION ["profile"] = "Assets/img/pdp/".$login[6];
 
             header("location:index.php?action=".$login[3]);
                 

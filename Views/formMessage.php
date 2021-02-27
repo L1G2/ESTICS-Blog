@@ -33,10 +33,22 @@
 					<h4 id="name"><?php echo ($_SESSION["prenom"]);?></h4>
 					<span id="email"><?php echo ($_SESSION["email"]);?></span>
 					<h5 id="fontion"><?php echo ($_SESSION["type"]);?></h5>
+					<form action="index.php" method="post" enctype="multipart/form-data">>
+						<input type="file" name="fileToUpload" id="fileToUpload">
+						<input type="submit" value="VALIDER" name="submit">
+					</form>
 				</div>
 			</div>
 			<div id="container-tool">
 				<button id="logout-btn"><a href="index.php?action=deconnecter">Deconection</a></button>
+			</div>
+			<div class = "notif">
+				<?php
+					require_once("Models/M_discussion.php");
+					$mess = new message();
+					$test = $mess -> check_nb_message ($_SESSION["id"]);
+					echo ($test);	
+				?>
 			</div>
 		</div>
 
@@ -68,15 +80,20 @@
 					<h1>Formulaire pour envoyer un message</h1>
 
 
-					<form action="index.php?action=envoyer" method="post">
-					<div>
-						<input type='checkbox'  name='dastinataire' value='id'>
-						<label for='detinataire'>Tous</label>
-					</div>
-
+					<form action="index.php?action=mety" method="post">
 					
+						<select class="select" name = "dest">
+							<?php
 
+								foreach ($liste[0] as $key => $value) {
+								echo "<option value=" .$liste[0][$key] . ">" . $liste[1][$key]. "</option>";
+								}
+							?>
 
+						</select>
+						<input type="text" name="message" id="">
+						<input type="submit" value="Envoyer">
+					
 					</form>
 				</section>
 

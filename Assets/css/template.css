@@ -70,6 +70,7 @@ body {
 /*Avatar et Les info sur l'utilisateur*/
 #avatar {
     width:120px;
+    max-height: 120px;
     border-radius: 5px;
     box-shadow: 0 20px 30px 0 rgba(0,0,0,0.3);
 }
@@ -81,10 +82,34 @@ body {
     float: left;
 }
 #user-info{
+  line-height : 5px;
   text-align: left;
   float: left;
   padding-left: 10%;
   height: 30%;
+}
+#fontion{
+  text-transform: uppercase;
+}
+
+/*Boutton de deconnexion*/
+button{
+  padding: 5px;
+  margin-left: 5px;
+  margin-top: 5px;
+  border: 0 solid white;
+  border-radius: 5px;
+  text-decoration: none;
+}
+button a{
+  text-decoration: none;
+  color: white;
+}
+#logout-btn{
+  background-color: #009FE3;
+  float: right;
+  border-radius: 5px;
+  font-size: large;
 }
 
 /* Page principale */
@@ -129,9 +154,9 @@ main{
 }
 
 #central{
-  margin-right: 3.5%;
+  margin-right: 1%;
   float:right;
-  width: 75%;
+  width: 78%;
   padding : 2%;
 }
 

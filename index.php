@@ -32,6 +32,10 @@
 		elseif ($action == "about"){
 			about();
 		}
+		elseif ($action == "send"){
+			$id = $_POST[" "];
+			$message = $_POST[" "];
+		}
 		elseif ($action == "ajouterEtudiant"){
 			ajouterEtudiant();
 		}
@@ -56,6 +60,19 @@
 		elseif ($action == "deconnecter"){
 			session_destroy();
 			home();
+
+		}
+		elseif ($action == "mety"){
+
+			if (isset($_POST["message"])&&isset($_POST["dest"])){
+				echo "rivo";
+				$message = $_POST["message"];
+				$id = $_POST["dest"];
+
+				
+				
+				envoyer ($_SESSION["id"],$id, $message);
+			}
 
 		}
 		elseif ($action == "modifier"){
@@ -132,18 +149,77 @@
 			}
 		}
 		elseif ($action == "publierArticle"){
-			if (isset($_GET["id"]) && isset($_POST["article"])&& isset($_POST["objet"])){
-				$id = $_SESSION["id"];
-				$article = $_POST["article"];
-				$objet = $_POST ["objet"];
+			if (isset($_GET["id"]) && isset($_POST["article"])&& isset($_POST["objet"])&&isset ($_POST["submit"])){
+				$target_dir = "Assets/img/article/";
+				$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+				$uploadOk = 1;
+				$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+				
+				// Check if image file is a actual image or fake image
+				if(isset($_POST["submit"])) {
+				  $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+				  if($check !== false) {
+					echo "File is an image - " . $check["mime"] . ".";
+					$uploadOk = 1;
+				  } else {
+					echo "File is not an image.";
+					$uploadOk = 0;
+				  }
+				}
+				
+				// Check if file already exists
+				if (file_exists($target_file)) {
+				  echo "Sorry, file already exists.";
+		
+				  $chemin = $_FILES["fileToUpload"]["name"];
+				  $id = $_SESSION["id"];
+				  $article = $_POST["article"];
+				  $objet = $_POST ["objet"];
+				  $image = $chemin;
+				  
+				  publish ($id,$article ,$objet,$image);
+				  $uploadOk = 0;
+				}
+				
+				// Check file size
+				if ($_FILES["fileToUpload"]["size"] > 500000) {
+				  echo "Sorry, your file is too large.";
+				  
+				  $uploadOk = 0;
+				}
+				
+				// Allow certain file formats
+				if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+				&& $imageFileType != "gif" ) {
+				  echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+				  $uploadOk = 0;
+				}
+				
+				// Check if $uploadOk is set to 0 by an error
+				if ($uploadOk == 0) {
+				  echo "Sorry, your file was not uploaded.";
+				// if everything is ok, try to upload file
+				} else {
+				  if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+					echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+					$chemin =$_FILES["fileToUpload"]["name"];
+					
+					$id = $_SESSION["id"];
+					$article = $_POST["article"];
+					$objet = $_POST ["objet"];
+					$image = $chemin;
 
-				publish ($id,$article ,$objet);
+					publish ($id,$article ,$objet,$image);
+				  } else {
+					echo "Sorry, there was an error uploading your file.";
+				  }
+				}	
 			}
 		}
 
 	} 
 	elseif (isset ($_POST["submit"])){
-		$target_dir = "pdp/";
+		$target_dir = "Assets/img/pdp/";
 		$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 		$uploadOk = 1;
 		$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -164,10 +240,10 @@
 		if (file_exists($target_file)) {
 		  echo "Sorry, file already exists.";
 
-		  $chemin = "pdp/".$_FILES["fileToUpload"]["name"];
+		  $chemin = $_FILES["fileToUpload"]["name"];
 		  $user = new user ();
 		  $user -> updateProfile ($_SESSION["id"],$chemin);
-		  $_SESSION ["profile"]= $chemin;
+		  $_SESSION["profile"]= "Assets/img/pdp/".$chemin;
 		  $uploadOk = 0;
 		}
 		
@@ -192,16 +268,13 @@
 		} else {
 		  if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 			echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
-			$chemin = "pdp/".$_FILES["fileToUpload"]["name"];
+			$chemin = $_FILES["fileToUpload"]["name"];
 			$user = new user ();
 			$user -> updateProfile ($_SESSION["id"],$chemin);
-			$_SESSION ["profile"]= $chemin;
-		  } else {
-			echo "Sorry, there was an error uploading your file.";
+			$_SESSION["profile"]= "Assets/img/pdp/".$chemin;
 		  }
 		}
 		header('Location: index.php?action=etudiant');
-		
 	}  
 	else{  
 		home();
