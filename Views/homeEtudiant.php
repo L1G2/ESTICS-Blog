@@ -42,14 +42,12 @@
 			<div id="container-tool">
 				<button id="logout-btn"><a href="index.php?action=deconnecter">Deconection</a></button>
 			</div>
-			<div>
+			<div class = "notif">
 				<?php
 					require_once("Models/M_discussion.php");
 					$mess = new message();
 					$test = $mess -> check_nb_message ($_SESSION["id"]);
-
-					echo ($test);
-						
+					echo ($test);	
 				?>
 			</div>
 		</div>

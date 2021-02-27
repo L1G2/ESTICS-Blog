@@ -34,6 +34,10 @@
 					<h4 id="name"><?php echo ($_SESSION["prenom"]);?></h4>
 					<span id="email"><?php echo ($_SESSION["email"]);?></span>
 					<h5 id="fontion"><?php echo ($_SESSION["type"]);?></h5>
+					<form action="index.php" method="post" enctype="multipart/form-data">>
+						<input type="file" name="fileToUpload" id="fileToUpload">
+						<input type="submit" value="VALIDER" name="submit">
+					</form>
 				</div>
 			</div>
 			<div id="container-tool">
