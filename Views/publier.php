@@ -41,15 +41,15 @@
 				</div>
 			</div>
 			<div id="container-tool">
-				<button id="logout-btn"><a href="index.php?action=deconnecter">Deconection</a></button>
-			</div>
-			<div class = "notif">
-				<?php
-					require_once("Models/M_discussion.php");
-					$mess = new message();
-					$test = $mess -> check_nb_message ($_SESSION["id"]);
-					echo ($test);	
-				?>
+                <button id = "notif"><a href='index.php?action=message'><span>
+                    <?php
+                        require_once("Models/M_discussion.php");
+                        $mess = new message();
+                        $test = $mess -> check_nb_message ($_SESSION["id"]);
+                        echo ($test);	
+                    ?></span> Messages </a>
+                </button>
+				<button id="logout-btn"><a href="index.php?action=deconnecter">Deconnexion</a></button>
 			</div>
 		</div>
 
